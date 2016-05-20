@@ -1,4 +1,4 @@
-# Code golf: 20 Líneas
+# Code golf: 18 Líneas asesinos seriales
 
 El script [dataprep.R](dataprep.R) descarga unos datos y los limpia para guardarlos en el archivo [serial-killers-clean.csv](serial-killers-clean.csv).
 

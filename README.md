@@ -5,7 +5,7 @@ El link de nuestro meetup
 [http://www.meetup.com/Bogota-R-Users-Group](http://www.meetup.com/Bogota-R-Users-Group)
 
 
-## 20 Líneas de R (2016-05-25)
+## Code Golf: 18 Líneas de R asesinos seriales (2016-05-25)
 
 Ejercicio de análisis para compartir experiencias con 20 líneas de R a partir de una tabla de datos dada.
 
