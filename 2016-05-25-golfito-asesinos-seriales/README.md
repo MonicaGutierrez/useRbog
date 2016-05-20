@@ -2,7 +2,7 @@
 
 El script [dataprep.R](dataprep.R) descarga unos datos y los limpia para guardarlos en el archivo [serial-killers-clean.csv](serial-killers-clean.csv).
 
-El objetivo es leer crear un script y con tan solo 20 líneas hacer un análisis de datos (sin hacer trampa con one-liners de más de 80 caracteres). 
+El objetivo es leer crear un script y con tan solo 18 líneas hacer un análisis de datos (sin hacer trampa con one-liners de más de 80 caracteres). 
 
 Ejemplo (5 líneas):
 
