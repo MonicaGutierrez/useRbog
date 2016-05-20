@@ -8,7 +8,8 @@ Meetups:
 
 Web scraping con R
 [webscraping](./webscraping/)
-Link a la presentación: https://docs.google.com/presentation/d/1aFUbRznKUnpLLx6llURR9hxOwVNTz3kHeY5I4QAAljg/pub?start=false&loop=false&delayms=3000&slide=id.p
+
+[Link a la presentación](https://docs.google.com/presentation/d/1aFUbRznKUnpLLx6llURR9hxOwVNTz3kHeY5I4QAAljg/pub?start=false&loop=false&delayms=3000&slide=id.p)
 
 
 
