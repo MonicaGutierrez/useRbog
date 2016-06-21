@@ -17,6 +17,13 @@ Paquetes y herramientas para webscraping
 - [Presentación](https://docs.google.com/presentation/d/1aFUbRznKUnpLLx6llURR9hxOwVNTz3kHeY5I4QAAljg/pub?start=false&loop=false&delayms=3000&slide=id.p)
 
 
+## Ideas meetup
+
+- Trabajando con JSON
+- Limpieza de datos
+- Introducción general
+- Comparar gráficos con ggplot (extensiones)
+- 
 
 
 

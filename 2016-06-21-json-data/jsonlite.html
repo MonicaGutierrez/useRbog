@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Obtener datos</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<pre><code class="r">library(jsonlite)
+library(httr)
+
+
+txt &lt;- &quot;[12, 3, 7]&quot;
+x &lt;- fromJSON(txt)
+x
+</code></pre>
+
+<pre><code>## [1] 12  3  7
+</code></pre>
+
+<h1>Obtener datos</h1>
+
+<pre><code class="r">#get data
+d &lt;- fromJSON(&quot;https://api.github.com/users/hadley/orgs&quot;)
+
+str(d)
+</code></pre>
+
+<pre><code>## &#39;data.frame&#39;:    6 obs. of  11 variables:
+##  $ login             : chr  &quot;ggobi&quot; &quot;rstudio&quot; &quot;rstats&quot; &quot;ropensci&quot; ...
+##  $ id                : int  423638 513560 722735 1200269 3330561 5695665
+##  $ url               : chr  &quot;https://api.github.com/orgs/ggobi&quot; &quot;https://api.github.com/orgs/rstudio&quot; &quot;https://api.github.com/orgs/rstats&quot; &quot;https://api.github.com/orgs/ropensci&quot; ...
+##  $ repos_url         : chr  &quot;https://api.github.com/orgs/ggobi/repos&quot; &quot;https://api.github.com/orgs/rstudio/repos&quot; &quot;https://api.github.com/orgs/rstats/repos&quot; &quot;https://api.github.com/orgs/ropensci/repos&quot; ...
+##  $ events_url        : chr  &quot;https://api.github.com/orgs/ggobi/events&quot; &quot;https://api.github.com/orgs/rstudio/events&quot; &quot;https://api.github.com/orgs/rstats/events&quot; &quot;https://api.github.com/orgs/ropensci/events&quot; ...
+##  $ hooks_url         : chr  &quot;https://api.github.com/orgs/ggobi/hooks&quot; &quot;https://api.github.com/orgs/rstudio/hooks&quot; &quot;https://api.github.com/orgs/rstats/hooks&quot; &quot;https://api.github.com/orgs/ropensci/hooks&quot; ...
+##  $ issues_url        : chr  &quot;https://api.github.com/orgs/ggobi/issues&quot; &quot;https://api.github.com/orgs/rstudio/issues&quot; &quot;https://api.github.com/orgs/rstats/issues&quot; &quot;https://api.github.com/orgs/ropensci/issues&quot; ...
+##  $ members_url       : chr  &quot;https://api.github.com/orgs/ggobi/members{/member}&quot; &quot;https://api.github.com/orgs/rstudio/members{/member}&quot; &quot;https://api.github.com/orgs/rstats/members{/member}&quot; &quot;https://api.github.com/orgs/ropensci/members{/member}&quot; ...
+##  $ public_members_url: chr  &quot;https://api.github.com/orgs/ggobi/public_members{/member}&quot; &quot;https://api.github.com/orgs/rstudio/public_members{/member}&quot; &quot;https://api.github.com/orgs/rstats/public_members{/member}&quot; &quot;https://api.github.com/orgs/ropensci/public_members{/member}&quot; ...
+##  $ avatar_url        : chr  &quot;https://avatars.githubusercontent.com/u/423638?v=3&quot; &quot;https://avatars.githubusercontent.com/u/513560?v=3&quot; &quot;https://avatars.githubusercontent.com/u/722735?v=3&quot; &quot;https://avatars.githubusercontent.com/u/1200269?v=3&quot; ...
+##  $ description       : chr  &quot;&quot; NA NA &quot;&quot; ...
+</code></pre>
+
+<pre><code class="r">#it&#39;s a data frame
+names(d)
+</code></pre>
+
+<pre><code>##  [1] &quot;login&quot;              &quot;id&quot;                 &quot;url&quot;               
+##  [4] &quot;repos_url&quot;          &quot;events_url&quot;         &quot;hooks_url&quot;         
+##  [7] &quot;issues_url&quot;         &quot;members_url&quot;        &quot;public_members_url&quot;
+## [10] &quot;avatar_url&quot;         &quot;description&quot;
+</code></pre>
+
+<pre><code class="r">d$login
+</code></pre>
+
+<pre><code>## [1] &quot;ggobi&quot;     &quot;rstudio&quot;   &quot;rstats&quot;    &quot;ropensci&quot;  &quot;rjournal&quot;  &quot;rstats-db&quot;
+</code></pre>
+
+<pre><code class="r">d &lt;- fromJSON(&quot;https://api.github.com/users/hadley/repos&quot;)
+
+#it&#39;s a data frame...
+names(d)
+</code></pre>
+
+<pre><code>##  [1] &quot;id&quot;                &quot;name&quot;              &quot;full_name&quot;        
+##  [4] &quot;owner&quot;             &quot;private&quot;           &quot;html_url&quot;         
+##  [7] &quot;description&quot;       &quot;fork&quot;              &quot;url&quot;              
+## [10] &quot;forks_url&quot;         &quot;keys_url&quot;          &quot;collaborators_url&quot;
+## [13] &quot;teams_url&quot;         &quot;hooks_url&quot;         &quot;issue_events_url&quot; 
+## [16] &quot;events_url&quot;        &quot;assignees_url&quot;     &quot;branches_url&quot;     
+## [19] &quot;tags_url&quot;          &quot;blobs_url&quot;         &quot;git_tags_url&quot;     
+## [22] &quot;git_refs_url&quot;      &quot;trees_url&quot;         &quot;statuses_url&quot;     
+## [25] &quot;languages_url&quot;     &quot;stargazers_url&quot;    &quot;contributors_url&quot; 
+## [28] &quot;subscribers_url&quot;   &quot;subscription_url&quot;  &quot;commits_url&quot;      
+## [31] &quot;git_commits_url&quot;   &quot;comments_url&quot;      &quot;issue_comment_url&quot;
+## [34] &quot;contents_url&quot;      &quot;compare_url&quot;       &quot;merges_url&quot;       
+## [37] &quot;archive_url&quot;       &quot;downloads_url&quot;     &quot;issues_url&quot;       
+## [40] &quot;pulls_url&quot;         &quot;milestones_url&quot;    &quot;notifications_url&quot;
+## [43] &quot;labels_url&quot;        &quot;releases_url&quot;      &quot;deployments_url&quot;  
+## [46] &quot;created_at&quot;        &quot;updated_at&quot;        &quot;pushed_at&quot;        
+## [49] &quot;git_url&quot;           &quot;ssh_url&quot;           &quot;clone_url&quot;        
+## [52] &quot;svn_url&quot;           &quot;homepage&quot;          &quot;size&quot;             
+## [55] &quot;stargazers_count&quot;  &quot;watchers_count&quot;    &quot;language&quot;         
+## [58] &quot;has_issues&quot;        &quot;has_downloads&quot;     &quot;has_wiki&quot;         
+## [61] &quot;has_pages&quot;         &quot;forks_count&quot;       &quot;mirror_url&quot;       
+## [64] &quot;open_issues_count&quot; &quot;forks&quot;             &quot;open_issues&quot;      
+## [67] &quot;watchers&quot;          &quot;default_branch&quot;
+</code></pre>
+
+<pre><code class="r">d$name
+</code></pre>
+
+<pre><code>##  [1] &quot;15-state-of-the-union&quot; &quot;15-student-papers&quot;    
+##  [3] &quot;500lines&quot;              &quot;adv-r&quot;                
+##  [5] &quot;appdirs&quot;               &quot;assertthat&quot;           
+##  [7] &quot;babynames&quot;             &quot;beautiful-data&quot;       
+##  [9] &quot;bench&quot;                 &quot;bigvis&quot;               
+## [11] &quot;bigvis-infovis&quot;        &quot;boxplots-paper&quot;       
+## [13] &quot;broom&quot;                 &quot;builder&quot;              
+## [15] &quot;cellranger&quot;            &quot;classifly&quot;            
+## [17] &quot;clusterfly&quot;            &quot;cran-downloads&quot;       
+## [19] &quot;cran-logs-dplyr&quot;       &quot;cran-packages&quot;        
+## [21] &quot;cranatics&quot;             &quot;crantastic&quot;           
+## [23] &quot;data-baby-names&quot;       &quot;data-counties&quot;        
+## [25] &quot;data-fuel-economy&quot;     &quot;data-gbd&quot;             
+## [27] &quot;data-housing-crisis&quot;   &quot;data-movies&quot;          
+## [29] &quot;data-stride&quot;           &quot;decumar&quot;
+</code></pre>
+
+<pre><code class="r">#...with has a nested data frame
+names(d$owner)
+</code></pre>
+
+<pre><code>##  [1] &quot;login&quot;               &quot;id&quot;                  &quot;avatar_url&quot;         
+##  [4] &quot;gravatar_id&quot;         &quot;url&quot;                 &quot;html_url&quot;           
+##  [7] &quot;followers_url&quot;       &quot;following_url&quot;       &quot;gists_url&quot;          
+## [10] &quot;starred_url&quot;         &quot;subscriptions_url&quot;   &quot;organizations_url&quot;  
+## [13] &quot;repos_url&quot;           &quot;events_url&quot;          &quot;received_events_url&quot;
+## [16] &quot;type&quot;                &quot;site_admin&quot;
+</code></pre>
+
+<pre><code class="r">str(d)
+</code></pre>
+
+<pre><code>## &#39;data.frame&#39;:    30 obs. of  68 variables:
+##  $ id               : int  40423928 40544418 14984909 12241750 5154874 9324319 20228011 82348 888200 3116998 ...
+##  $ name             : chr  &quot;15-state-of-the-union&quot; &quot;15-student-papers&quot; &quot;500lines&quot; &quot;adv-r&quot; ...
+##  $ full_name        : chr  &quot;hadley/15-state-of-the-union&quot; &quot;hadley/15-student-papers&quot; &quot;hadley/500lines&quot; &quot;hadley/adv-r&quot; ...
+##  $ owner            :&#39;data.frame&#39;:   30 obs. of  17 variables:
+##   ..$ login              : chr  &quot;hadley&quot; &quot;hadley&quot; &quot;hadley&quot; &quot;hadley&quot; ...
+##   ..$ id                 : int  4196 4196 4196 4196 4196 4196 4196 4196 4196 4196 ...
+##   ..$ avatar_url         : chr  &quot;https://avatars.githubusercontent.com/u/4196?v=3&quot; &quot;https://avatars.githubusercontent.com/u/4196?v=3&quot; &quot;https://avatars.githubusercontent.com/u/4196?v=3&quot; &quot;https://avatars.githubusercontent.com/u/4196?v=3&quot; ...
+##   ..$ gravatar_id        : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##   ..$ url                : chr  &quot;https://api.github.com/users/hadley&quot; &quot;https://api.github.com/users/hadley&quot; &quot;https://api.github.com/users/hadley&quot; &quot;https://api.github.com/users/hadley&quot; ...
+##   ..$ html_url           : chr  &quot;https://github.com/hadley&quot; &quot;https://github.com/hadley&quot; &quot;https://github.com/hadley&quot; &quot;https://github.com/hadley&quot; ...
+##   ..$ followers_url      : chr  &quot;https://api.github.com/users/hadley/followers&quot; &quot;https://api.github.com/users/hadley/followers&quot; &quot;https://api.github.com/users/hadley/followers&quot; &quot;https://api.github.com/users/hadley/followers&quot; ...
+##   ..$ following_url      : chr  &quot;https://api.github.com/users/hadley/following{/other_user}&quot; &quot;https://api.github.com/users/hadley/following{/other_user}&quot; &quot;https://api.github.com/users/hadley/following{/other_user}&quot; &quot;https://api.github.com/users/hadley/following{/other_user}&quot; ...
+##   ..$ gists_url          : chr  &quot;https://api.github.com/users/hadley/gists{/gist_id}&quot; &quot;https://api.github.com/users/hadley/gists{/gist_id}&quot; &quot;https://api.github.com/users/hadley/gists{/gist_id}&quot; &quot;https://api.github.com/users/hadley/gists{/gist_id}&quot; ...
+##   ..$ starred_url        : chr  &quot;https://api.github.com/users/hadley/starred{/owner}{/repo}&quot; &quot;https://api.github.com/users/hadley/starred{/owner}{/repo}&quot; &quot;https://api.github.com/users/hadley/starred{/owner}{/repo}&quot; &quot;https://api.github.com/users/hadley/starred{/owner}{/repo}&quot; ...
+##   ..$ subscriptions_url  : chr  &quot;https://api.github.com/users/hadley/subscriptions&quot; &quot;https://api.github.com/users/hadley/subscriptions&quot; &quot;https://api.github.com/users/hadley/subscriptions&quot; &quot;https://api.github.com/users/hadley/subscriptions&quot; ...
+##   ..$ organizations_url  : chr  &quot;https://api.github.com/users/hadley/orgs&quot; &quot;https://api.github.com/users/hadley/orgs&quot; &quot;https://api.github.com/users/hadley/orgs&quot; &quot;https://api.github.com/users/hadley/orgs&quot; ...
+##   ..$ repos_url          : chr  &quot;https://api.github.com/users/hadley/repos&quot; &quot;https://api.github.com/users/hadley/repos&quot; &quot;https://api.github.com/users/hadley/repos&quot; &quot;https://api.github.com/users/hadley/repos&quot; ...
+##   ..$ events_url         : chr  &quot;https://api.github.com/users/hadley/events{/privacy}&quot; &quot;https://api.github.com/users/hadley/events{/privacy}&quot; &quot;https://api.github.com/users/hadley/events{/privacy}&quot; &quot;https://api.github.com/users/hadley/events{/privacy}&quot; ...
+##   ..$ received_events_url: chr  &quot;https://api.github.com/users/hadley/received_events&quot; &quot;https://api.github.com/users/hadley/received_events&quot; &quot;https://api.github.com/users/hadley/received_events&quot; &quot;https://api.github.com/users/hadley/received_events&quot; ...
+##   ..$ type               : chr  &quot;User&quot; &quot;User&quot; &quot;User&quot; &quot;User&quot; ...
+##   ..$ site_admin         : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
+##  $ private          : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
+##  $ html_url         : chr  &quot;https://github.com/hadley/15-state-of-the-union&quot; &quot;https://github.com/hadley/15-student-papers&quot; &quot;https://github.com/hadley/500lines&quot; &quot;https://github.com/hadley/adv-r&quot; ...
+##  $ description      : chr  &quot;&quot; &quot;Graphics &amp; computing student paper winners @ JSM 2015&quot; &quot;500 Lines or Less&quot; &quot;Advanced R programming: a book&quot; ...
+##  $ fork             : logi  FALSE FALSE TRUE FALSE TRUE FALSE ...
+##  $ url              : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union&quot; &quot;https://api.github.com/repos/hadley/15-student-papers&quot; &quot;https://api.github.com/repos/hadley/500lines&quot; &quot;https://api.github.com/repos/hadley/adv-r&quot; ...
+##  $ forks_url        : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/forks&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/forks&quot; &quot;https://api.github.com/repos/hadley/500lines/forks&quot; &quot;https://api.github.com/repos/hadley/adv-r/forks&quot; ...
+##  $ keys_url         : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/keys{/key_id}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/keys{/key_id}&quot; &quot;https://api.github.com/repos/hadley/500lines/keys{/key_id}&quot; &quot;https://api.github.com/repos/hadley/adv-r/keys{/key_id}&quot; ...
+##  $ collaborators_url: chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/collaborators{/collaborator}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/collaborators{/collaborator}&quot; &quot;https://api.github.com/repos/hadley/500lines/collaborators{/collaborator}&quot; &quot;https://api.github.com/repos/hadley/adv-r/collaborators{/collaborator}&quot; ...
+##  $ teams_url        : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/teams&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/teams&quot; &quot;https://api.github.com/repos/hadley/500lines/teams&quot; &quot;https://api.github.com/repos/hadley/adv-r/teams&quot; ...
+##  $ hooks_url        : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/hooks&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/hooks&quot; &quot;https://api.github.com/repos/hadley/500lines/hooks&quot; &quot;https://api.github.com/repos/hadley/adv-r/hooks&quot; ...
+##  $ issue_events_url : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/issues/events{/number}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/issues/events{/number}&quot; &quot;https://api.github.com/repos/hadley/500lines/issues/events{/number}&quot; &quot;https://api.github.com/repos/hadley/adv-r/issues/events{/number}&quot; ...
+##  $ events_url       : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/events&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/events&quot; &quot;https://api.github.com/repos/hadley/500lines/events&quot; &quot;https://api.github.com/repos/hadley/adv-r/events&quot; ...
+##  $ assignees_url    : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/assignees{/user}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/assignees{/user}&quot; &quot;https://api.github.com/repos/hadley/500lines/assignees{/user}&quot; &quot;https://api.github.com/repos/hadley/adv-r/assignees{/user}&quot; ...
+##  $ branches_url     : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/branches{/branch}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/branches{/branch}&quot; &quot;https://api.github.com/repos/hadley/500lines/branches{/branch}&quot; &quot;https://api.github.com/repos/hadley/adv-r/branches{/branch}&quot; ...
+##  $ tags_url         : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/tags&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/tags&quot; &quot;https://api.github.com/repos/hadley/500lines/tags&quot; &quot;https://api.github.com/repos/hadley/adv-r/tags&quot; ...
+##  $ blobs_url        : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/git/blobs{/sha}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/git/blobs{/sha}&quot; &quot;https://api.github.com/repos/hadley/500lines/git/blobs{/sha}&quot; &quot;https://api.github.com/repos/hadley/adv-r/git/blobs{/sha}&quot; ...
+##  $ git_tags_url     : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/git/tags{/sha}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/git/tags{/sha}&quot; &quot;https://api.github.com/repos/hadley/500lines/git/tags{/sha}&quot; &quot;https://api.github.com/repos/hadley/adv-r/git/tags{/sha}&quot; ...
+##  $ git_refs_url     : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/git/refs{/sha}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/git/refs{/sha}&quot; &quot;https://api.github.com/repos/hadley/500lines/git/refs{/sha}&quot; &quot;https://api.github.com/repos/hadley/adv-r/git/refs{/sha}&quot; ...
+##  $ trees_url        : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/git/trees{/sha}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/git/trees{/sha}&quot; &quot;https://api.github.com/repos/hadley/500lines/git/trees{/sha}&quot; &quot;https://api.github.com/repos/hadley/adv-r/git/trees{/sha}&quot; ...
+##  $ statuses_url     : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/statuses/{sha}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/statuses/{sha}&quot; &quot;https://api.github.com/repos/hadley/500lines/statuses/{sha}&quot; &quot;https://api.github.com/repos/hadley/adv-r/statuses/{sha}&quot; ...
+##  $ languages_url    : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/languages&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/languages&quot; &quot;https://api.github.com/repos/hadley/500lines/languages&quot; &quot;https://api.github.com/repos/hadley/adv-r/languages&quot; ...
+##  $ stargazers_url   : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/stargazers&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/stargazers&quot; &quot;https://api.github.com/repos/hadley/500lines/stargazers&quot; &quot;https://api.github.com/repos/hadley/adv-r/stargazers&quot; ...
+##  $ contributors_url : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/contributors&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/contributors&quot; &quot;https://api.github.com/repos/hadley/500lines/contributors&quot; &quot;https://api.github.com/repos/hadley/adv-r/contributors&quot; ...
+##  $ subscribers_url  : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/subscribers&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/subscribers&quot; &quot;https://api.github.com/repos/hadley/500lines/subscribers&quot; &quot;https://api.github.com/repos/hadley/adv-r/subscribers&quot; ...
+##  $ subscription_url : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/subscription&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/subscription&quot; &quot;https://api.github.com/repos/hadley/500lines/subscription&quot; &quot;https://api.github.com/repos/hadley/adv-r/subscription&quot; ...
+##  $ commits_url      : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/commits{/sha}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/commits{/sha}&quot; &quot;https://api.github.com/repos/hadley/500lines/commits{/sha}&quot; &quot;https://api.github.com/repos/hadley/adv-r/commits{/sha}&quot; ...
+##  $ git_commits_url  : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/git/commits{/sha}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/git/commits{/sha}&quot; &quot;https://api.github.com/repos/hadley/500lines/git/commits{/sha}&quot; &quot;https://api.github.com/repos/hadley/adv-r/git/commits{/sha}&quot; ...
+##  $ comments_url     : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/comments{/number}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/comments{/number}&quot; &quot;https://api.github.com/repos/hadley/500lines/comments{/number}&quot; &quot;https://api.github.com/repos/hadley/adv-r/comments{/number}&quot; ...
+##  $ issue_comment_url: chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/issues/comments{/number}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/issues/comments{/number}&quot; &quot;https://api.github.com/repos/hadley/500lines/issues/comments{/number}&quot; &quot;https://api.github.com/repos/hadley/adv-r/issues/comments{/number}&quot; ...
+##  $ contents_url     : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/contents/{+path}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/contents/{+path}&quot; &quot;https://api.github.com/repos/hadley/500lines/contents/{+path}&quot; &quot;https://api.github.com/repos/hadley/adv-r/contents/{+path}&quot; ...
+##  $ compare_url      : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/compare/{base}...{head}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/compare/{base}...{head}&quot; &quot;https://api.github.com/repos/hadley/500lines/compare/{base}...{head}&quot; &quot;https://api.github.com/repos/hadley/adv-r/compare/{base}...{head}&quot; ...
+##  $ merges_url       : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/merges&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/merges&quot; &quot;https://api.github.com/repos/hadley/500lines/merges&quot; &quot;https://api.github.com/repos/hadley/adv-r/merges&quot; ...
+##  $ archive_url      : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/{archive_format}{/ref}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/{archive_format}{/ref}&quot; &quot;https://api.github.com/repos/hadley/500lines/{archive_format}{/ref}&quot; &quot;https://api.github.com/repos/hadley/adv-r/{archive_format}{/ref}&quot; ...
+##  $ downloads_url    : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/downloads&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/downloads&quot; &quot;https://api.github.com/repos/hadley/500lines/downloads&quot; &quot;https://api.github.com/repos/hadley/adv-r/downloads&quot; ...
+##  $ issues_url       : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/issues{/number}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/issues{/number}&quot; &quot;https://api.github.com/repos/hadley/500lines/issues{/number}&quot; &quot;https://api.github.com/repos/hadley/adv-r/issues{/number}&quot; ...
+##  $ pulls_url        : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/pulls{/number}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/pulls{/number}&quot; &quot;https://api.github.com/repos/hadley/500lines/pulls{/number}&quot; &quot;https://api.github.com/repos/hadley/adv-r/pulls{/number}&quot; ...
+##  $ milestones_url   : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/milestones{/number}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/milestones{/number}&quot; &quot;https://api.github.com/repos/hadley/500lines/milestones{/number}&quot; &quot;https://api.github.com/repos/hadley/adv-r/milestones{/number}&quot; ...
+##  $ notifications_url: chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/notifications{?since,all,participating}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/notifications{?since,all,participating}&quot; &quot;https://api.github.com/repos/hadley/500lines/notifications{?since,all,participating}&quot; &quot;https://api.github.com/repos/hadley/adv-r/notifications{?since,all,participating}&quot; ...
+##  $ labels_url       : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/labels{/name}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/labels{/name}&quot; &quot;https://api.github.com/repos/hadley/500lines/labels{/name}&quot; &quot;https://api.github.com/repos/hadley/adv-r/labels{/name}&quot; ...
+##  $ releases_url     : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/releases{/id}&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/releases{/id}&quot; &quot;https://api.github.com/repos/hadley/500lines/releases{/id}&quot; &quot;https://api.github.com/repos/hadley/adv-r/releases{/id}&quot; ...
+##  $ deployments_url  : chr  &quot;https://api.github.com/repos/hadley/15-state-of-the-union/deployments&quot; &quot;https://api.github.com/repos/hadley/15-student-papers/deployments&quot; &quot;https://api.github.com/repos/hadley/500lines/deployments&quot; &quot;https://api.github.com/repos/hadley/adv-r/deployments&quot; ...
+##  $ created_at       : chr  &quot;2015-08-09T03:22:26Z&quot; &quot;2015-08-11T13:51:29Z&quot; &quot;2013-12-06T14:35:23Z&quot; &quot;2013-08-20T11:43:03Z&quot; ...
+##  $ updated_at       : chr  &quot;2016-02-23T16:38:41Z&quot; &quot;2016-02-04T23:28:15Z&quot; &quot;2014-04-29T13:52:08Z&quot; &quot;2016-06-21T07:26:41Z&quot; ...
+##  $ pushed_at        : chr  &quot;2015-08-10T20:29:10Z&quot; &quot;2015-08-21T15:27:51Z&quot; &quot;2013-12-06T01:16:37Z&quot; &quot;2016-06-20T19:20:44Z&quot; ...
+##  $ git_url          : chr  &quot;git://github.com/hadley/15-state-of-the-union.git&quot; &quot;git://github.com/hadley/15-student-papers.git&quot; &quot;git://github.com/hadley/500lines.git&quot; &quot;git://github.com/hadley/adv-r.git&quot; ...
+##  $ ssh_url          : chr  &quot;git@github.com:hadley/15-state-of-the-union.git&quot; &quot;git@github.com:hadley/15-student-papers.git&quot; &quot;git@github.com:hadley/500lines.git&quot; &quot;git@github.com:hadley/adv-r.git&quot; ...
+##  $ clone_url        : chr  &quot;https://github.com/hadley/15-state-of-the-union.git&quot; &quot;https://github.com/hadley/15-student-papers.git&quot; &quot;https://github.com/hadley/500lines.git&quot; &quot;https://github.com/hadley/adv-r.git&quot; ...
+##  $ svn_url          : chr  &quot;https://github.com/hadley/15-state-of-the-union&quot; &quot;https://github.com/hadley/15-student-papers&quot; &quot;https://github.com/hadley/500lines&quot; &quot;https://github.com/hadley/adv-r&quot; ...
+##  $ homepage         : chr  NA NA NA NA ...
+##  $ size             : int  4519 2956 490 11525 105 364 32470 5740 96 2217 ...
+##  $ stargazers_count : int  24 13 0 777 3 61 39 7 3 238 ...
+##  $ watchers_count   : int  24 13 0 777 3 61 39 7 3 238 ...
+##  $ language         : chr  &quot;R&quot; &quot;R&quot; &quot;CSS&quot; &quot;TeX&quot; ...
+##  $ has_issues       : logi  TRUE TRUE FALSE TRUE FALSE TRUE ...
+##  $ has_downloads    : logi  TRUE TRUE TRUE TRUE TRUE TRUE ...
+##  $ has_wiki         : logi  TRUE TRUE TRUE TRUE TRUE TRUE ...
+##  $ has_pages        : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
+##  $ forks_count      : int  6 0 2 827 0 19 23 1 0 31 ...
+##  $ mirror_url       : logi  NA NA NA NA NA NA ...
+##  $ open_issues_count: int  0 0 0 94 0 18 3 0 0 4 ...
+##  $ forks            : int  6 0 2 827 0 19 23 1 0 31 ...
+##  $ open_issues      : int  0 0 0 94 0 18 3 0 0 4 ...
+##  $ watchers         : int  24 13 0 777 3 61 39 7 3 238 ...
+##  $ default_branch   : chr  &quot;master&quot; &quot;master&quot; &quot;master&quot; &quot;master&quot; ...
+</code></pre>
+
+<pre><code class="r">d$owner
+</code></pre>
+
+<pre><code>##     login   id                                       avatar_url
+## 1  hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 2  hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 3  hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 4  hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 5  hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 6  hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 7  hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 8  hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 9  hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 10 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 11 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 12 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 13 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 14 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 15 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 16 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 17 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 18 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 19 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 20 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 21 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 22 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 23 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 24 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 25 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 26 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 27 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 28 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 29 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+## 30 hadley 4196 https://avatars.githubusercontent.com/u/4196?v=3
+##    gravatar_id                                 url
+## 1              https://api.github.com/users/hadley
+## 2              https://api.github.com/users/hadley
+## 3              https://api.github.com/users/hadley
+## 4              https://api.github.com/users/hadley
+## 5              https://api.github.com/users/hadley
+## 6              https://api.github.com/users/hadley
+## 7              https://api.github.com/users/hadley
+## 8              https://api.github.com/users/hadley
+## 9              https://api.github.com/users/hadley
+## 10             https://api.github.com/users/hadley
+## 11             https://api.github.com/users/hadley
+## 12             https://api.github.com/users/hadley
+## 13             https://api.github.com/users/hadley
+## 14             https://api.github.com/users/hadley
+## 15             https://api.github.com/users/hadley
+## 16             https://api.github.com/users/hadley
+## 17             https://api.github.com/users/hadley
+## 18             https://api.github.com/users/hadley
+## 19             https://api.github.com/users/hadley
+## 20             https://api.github.com/users/hadley
+## 21             https://api.github.com/users/hadley
+## 22             https://api.github.com/users/hadley
+## 23             https://api.github.com/users/hadley
+## 24             https://api.github.com/users/hadley
+## 25             https://api.github.com/users/hadley
+## 26             https://api.github.com/users/hadley
+## 27             https://api.github.com/users/hadley
+## 28             https://api.github.com/users/hadley
+## 29             https://api.github.com/users/hadley
+## 30             https://api.github.com/users/hadley
+##                     html_url                                 followers_url
+## 1  https://github.com/hadley https://api.github.com/users/hadley/followers
+## 2  https://github.com/hadley https://api.github.com/users/hadley/followers
+## 3  https://github.com/hadley https://api.github.com/users/hadley/followers
+## 4  https://github.com/hadley https://api.github.com/users/hadley/followers
+## 5  https://github.com/hadley https://api.github.com/users/hadley/followers
+## 6  https://github.com/hadley https://api.github.com/users/hadley/followers
+## 7  https://github.com/hadley https://api.github.com/users/hadley/followers
+## 8  https://github.com/hadley https://api.github.com/users/hadley/followers
+## 9  https://github.com/hadley https://api.github.com/users/hadley/followers
+## 10 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 11 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 12 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 13 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 14 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 15 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 16 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 17 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 18 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 19 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 20 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 21 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 22 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 23 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 24 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 25 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 26 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 27 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 28 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 29 https://github.com/hadley https://api.github.com/users/hadley/followers
+## 30 https://github.com/hadley https://api.github.com/users/hadley/followers
+##                                                 following_url
+## 1  https://api.github.com/users/hadley/following{/other_user}
+## 2  https://api.github.com/users/hadley/following{/other_user}
+## 3  https://api.github.com/users/hadley/following{/other_user}
+## 4  https://api.github.com/users/hadley/following{/other_user}
+## 5  https://api.github.com/users/hadley/following{/other_user}
+## 6  https://api.github.com/users/hadley/following{/other_user}
+## 7  https://api.github.com/users/hadley/following{/other_user}
+## 8  https://api.github.com/users/hadley/following{/other_user}
+## 9  https://api.github.com/users/hadley/following{/other_user}
+## 10 https://api.github.com/users/hadley/following{/other_user}
+## 11 https://api.github.com/users/hadley/following{/other_user}
+## 12 https://api.github.com/users/hadley/following{/other_user}
+## 13 https://api.github.com/users/hadley/following{/other_user}
+## 14 https://api.github.com/users/hadley/following{/other_user}
+## 15 https://api.github.com/users/hadley/following{/other_user}
+## 16 https://api.github.com/users/hadley/following{/other_user}
+## 17 https://api.github.com/users/hadley/following{/other_user}
+## 18 https://api.github.com/users/hadley/following{/other_user}
+## 19 https://api.github.com/users/hadley/following{/other_user}
+## 20 https://api.github.com/users/hadley/following{/other_user}
+## 21 https://api.github.com/users/hadley/following{/other_user}
+## 22 https://api.github.com/users/hadley/following{/other_user}
+## 23 https://api.github.com/users/hadley/following{/other_user}
+## 24 https://api.github.com/users/hadley/following{/other_user}
+## 25 https://api.github.com/users/hadley/following{/other_user}
+## 26 https://api.github.com/users/hadley/following{/other_user}
+## 27 https://api.github.com/users/hadley/following{/other_user}
+## 28 https://api.github.com/users/hadley/following{/other_user}
+## 29 https://api.github.com/users/hadley/following{/other_user}
+## 30 https://api.github.com/users/hadley/following{/other_user}
+##                                              gists_url
+## 1  https://api.github.com/users/hadley/gists{/gist_id}
+## 2  https://api.github.com/users/hadley/gists{/gist_id}
+## 3  https://api.github.com/users/hadley/gists{/gist_id}
+## 4  https://api.github.com/users/hadley/gists{/gist_id}
+## 5  https://api.github.com/users/hadley/gists{/gist_id}
+## 6  https://api.github.com/users/hadley/gists{/gist_id}
+## 7  https://api.github.com/users/hadley/gists{/gist_id}
+## 8  https://api.github.com/users/hadley/gists{/gist_id}
+## 9  https://api.github.com/users/hadley/gists{/gist_id}
+## 10 https://api.github.com/users/hadley/gists{/gist_id}
+## 11 https://api.github.com/users/hadley/gists{/gist_id}
+## 12 https://api.github.com/users/hadley/gists{/gist_id}
+## 13 https://api.github.com/users/hadley/gists{/gist_id}
+## 14 https://api.github.com/users/hadley/gists{/gist_id}
+## 15 https://api.github.com/users/hadley/gists{/gist_id}
+## 16 https://api.github.com/users/hadley/gists{/gist_id}
+## 17 https://api.github.com/users/hadley/gists{/gist_id}
+## 18 https://api.github.com/users/hadley/gists{/gist_id}
+## 19 https://api.github.com/users/hadley/gists{/gist_id}
+## 20 https://api.github.com/users/hadley/gists{/gist_id}
+## 21 https://api.github.com/users/hadley/gists{/gist_id}
+## 22 https://api.github.com/users/hadley/gists{/gist_id}
+## 23 https://api.github.com/users/hadley/gists{/gist_id}
+## 24 https://api.github.com/users/hadley/gists{/gist_id}
+## 25 https://api.github.com/users/hadley/gists{/gist_id}
+## 26 https://api.github.com/users/hadley/gists{/gist_id}
+## 27 https://api.github.com/users/hadley/gists{/gist_id}
+## 28 https://api.github.com/users/hadley/gists{/gist_id}
+## 29 https://api.github.com/users/hadley/gists{/gist_id}
+## 30 https://api.github.com/users/hadley/gists{/gist_id}
+##                                                   starred_url
+## 1  https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 2  https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 3  https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 4  https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 5  https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 6  https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 7  https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 8  https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 9  https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 10 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 11 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 12 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 13 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 14 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 15 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 16 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 17 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 18 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 19 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 20 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 21 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 22 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 23 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 24 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 25 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 26 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 27 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 28 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 29 https://api.github.com/users/hadley/starred{/owner}{/repo}
+## 30 https://api.github.com/users/hadley/starred{/owner}{/repo}
+##                                    subscriptions_url
+## 1  https://api.github.com/users/hadley/subscriptions
+## 2  https://api.github.com/users/hadley/subscriptions
+## 3  https://api.github.com/users/hadley/subscriptions
+## 4  https://api.github.com/users/hadley/subscriptions
+## 5  https://api.github.com/users/hadley/subscriptions
+## 6  https://api.github.com/users/hadley/subscriptions
+## 7  https://api.github.com/users/hadley/subscriptions
+## 8  https://api.github.com/users/hadley/subscriptions
+## 9  https://api.github.com/users/hadley/subscriptions
+## 10 https://api.github.com/users/hadley/subscriptions
+## 11 https://api.github.com/users/hadley/subscriptions
+## 12 https://api.github.com/users/hadley/subscriptions
+## 13 https://api.github.com/users/hadley/subscriptions
+## 14 https://api.github.com/users/hadley/subscriptions
+## 15 https://api.github.com/users/hadley/subscriptions
+## 16 https://api.github.com/users/hadley/subscriptions
+## 17 https://api.github.com/users/hadley/subscriptions
+## 18 https://api.github.com/users/hadley/subscriptions
+## 19 https://api.github.com/users/hadley/subscriptions
+## 20 https://api.github.com/users/hadley/subscriptions
+## 21 https://api.github.com/users/hadley/subscriptions
+## 22 https://api.github.com/users/hadley/subscriptions
+## 23 https://api.github.com/users/hadley/subscriptions
+## 24 https://api.github.com/users/hadley/subscriptions
+## 25 https://api.github.com/users/hadley/subscriptions
+## 26 https://api.github.com/users/hadley/subscriptions
+## 27 https://api.github.com/users/hadley/subscriptions
+## 28 https://api.github.com/users/hadley/subscriptions
+## 29 https://api.github.com/users/hadley/subscriptions
+## 30 https://api.github.com/users/hadley/subscriptions
+##                           organizations_url
+## 1  https://api.github.com/users/hadley/orgs
+## 2  https://api.github.com/users/hadley/orgs
+## 3  https://api.github.com/users/hadley/orgs
+## 4  https://api.github.com/users/hadley/orgs
+## 5  https://api.github.com/users/hadley/orgs
+## 6  https://api.github.com/users/hadley/orgs
+## 7  https://api.github.com/users/hadley/orgs
+## 8  https://api.github.com/users/hadley/orgs
+## 9  https://api.github.com/users/hadley/orgs
+## 10 https://api.github.com/users/hadley/orgs
+## 11 https://api.github.com/users/hadley/orgs
+## 12 https://api.github.com/users/hadley/orgs
+## 13 https://api.github.com/users/hadley/orgs
+## 14 https://api.github.com/users/hadley/orgs
+## 15 https://api.github.com/users/hadley/orgs
+## 16 https://api.github.com/users/hadley/orgs
+## 17 https://api.github.com/users/hadley/orgs
+## 18 https://api.github.com/users/hadley/orgs
+## 19 https://api.github.com/users/hadley/orgs
+## 20 https://api.github.com/users/hadley/orgs
+## 21 https://api.github.com/users/hadley/orgs
+## 22 https://api.github.com/users/hadley/orgs
+## 23 https://api.github.com/users/hadley/orgs
+## 24 https://api.github.com/users/hadley/orgs
+## 25 https://api.github.com/users/hadley/orgs
+## 26 https://api.github.com/users/hadley/orgs
+## 27 https://api.github.com/users/hadley/orgs
+## 28 https://api.github.com/users/hadley/orgs
+## 29 https://api.github.com/users/hadley/orgs
+## 30 https://api.github.com/users/hadley/orgs
+##                                    repos_url
+## 1  https://api.github.com/users/hadley/repos
+## 2  https://api.github.com/users/hadley/repos
+## 3  https://api.github.com/users/hadley/repos
+## 4  https://api.github.com/users/hadley/repos
+## 5  https://api.github.com/users/hadley/repos
+## 6  https://api.github.com/users/hadley/repos
+## 7  https://api.github.com/users/hadley/repos
+## 8  https://api.github.com/users/hadley/repos
+## 9  https://api.github.com/users/hadley/repos
+## 10 https://api.github.com/users/hadley/repos
+## 11 https://api.github.com/users/hadley/repos
+## 12 https://api.github.com/users/hadley/repos
+## 13 https://api.github.com/users/hadley/repos
+## 14 https://api.github.com/users/hadley/repos
+## 15 https://api.github.com/users/hadley/repos
+## 16 https://api.github.com/users/hadley/repos
+## 17 https://api.github.com/users/hadley/repos
+## 18 https://api.github.com/users/hadley/repos
+## 19 https://api.github.com/users/hadley/repos
+## 20 https://api.github.com/users/hadley/repos
+## 21 https://api.github.com/users/hadley/repos
+## 22 https://api.github.com/users/hadley/repos
+## 23 https://api.github.com/users/hadley/repos
+## 24 https://api.github.com/users/hadley/repos
+## 25 https://api.github.com/users/hadley/repos
+## 26 https://api.github.com/users/hadley/repos
+## 27 https://api.github.com/users/hadley/repos
+## 28 https://api.github.com/users/hadley/repos
+## 29 https://api.github.com/users/hadley/repos
+## 30 https://api.github.com/users/hadley/repos
+##                                              events_url
+## 1  https://api.github.com/users/hadley/events{/privacy}
+## 2  https://api.github.com/users/hadley/events{/privacy}
+## 3  https://api.github.com/users/hadley/events{/privacy}
+## 4  https://api.github.com/users/hadley/events{/privacy}
+## 5  https://api.github.com/users/hadley/events{/privacy}
+## 6  https://api.github.com/users/hadley/events{/privacy}
+## 7  https://api.github.com/users/hadley/events{/privacy}
+## 8  https://api.github.com/users/hadley/events{/privacy}
+## 9  https://api.github.com/users/hadley/events{/privacy}
+## 10 https://api.github.com/users/hadley/events{/privacy}
+## 11 https://api.github.com/users/hadley/events{/privacy}
+## 12 https://api.github.com/users/hadley/events{/privacy}
+## 13 https://api.github.com/users/hadley/events{/privacy}
+## 14 https://api.github.com/users/hadley/events{/privacy}
+## 15 https://api.github.com/users/hadley/events{/privacy}
+## 16 https://api.github.com/users/hadley/events{/privacy}
+## 17 https://api.github.com/users/hadley/events{/privacy}
+## 18 https://api.github.com/users/hadley/events{/privacy}
+## 19 https://api.github.com/users/hadley/events{/privacy}
+## 20 https://api.github.com/users/hadley/events{/privacy}
+## 21 https://api.github.com/users/hadley/events{/privacy}
+## 22 https://api.github.com/users/hadley/events{/privacy}
+## 23 https://api.github.com/users/hadley/events{/privacy}
+## 24 https://api.github.com/users/hadley/events{/privacy}
+## 25 https://api.github.com/users/hadley/events{/privacy}
+## 26 https://api.github.com/users/hadley/events{/privacy}
+## 27 https://api.github.com/users/hadley/events{/privacy}
+## 28 https://api.github.com/users/hadley/events{/privacy}
+## 29 https://api.github.com/users/hadley/events{/privacy}
+## 30 https://api.github.com/users/hadley/events{/privacy}
+##                                    received_events_url type site_admin
+## 1  https://api.github.com/users/hadley/received_events User      FALSE
+## 2  https://api.github.com/users/hadley/received_events User      FALSE
+## 3  https://api.github.com/users/hadley/received_events User      FALSE
+## 4  https://api.github.com/users/hadley/received_events User      FALSE
+## 5  https://api.github.com/users/hadley/received_events User      FALSE
+## 6  https://api.github.com/users/hadley/received_events User      FALSE
+## 7  https://api.github.com/users/hadley/received_events User      FALSE
+## 8  https://api.github.com/users/hadley/received_events User      FALSE
+## 9  https://api.github.com/users/hadley/received_events User      FALSE
+## 10 https://api.github.com/users/hadley/received_events User      FALSE
+## 11 https://api.github.com/users/hadley/received_events User      FALSE
+## 12 https://api.github.com/users/hadley/received_events User      FALSE
+## 13 https://api.github.com/users/hadley/received_events User      FALSE
+## 14 https://api.github.com/users/hadley/received_events User      FALSE
+## 15 https://api.github.com/users/hadley/received_events User      FALSE
+## 16 https://api.github.com/users/hadley/received_events User      FALSE
+## 17 https://api.github.com/users/hadley/received_events User      FALSE
+## 18 https://api.github.com/users/hadley/received_events User      FALSE
+## 19 https://api.github.com/users/hadley/received_events User      FALSE
+## 20 https://api.github.com/users/hadley/received_events User      FALSE
+## 21 https://api.github.com/users/hadley/received_events User      FALSE
+## 22 https://api.github.com/users/hadley/received_events User      FALSE
+## 23 https://api.github.com/users/hadley/received_events User      FALSE
+## 24 https://api.github.com/users/hadley/received_events User      FALSE
+## 25 https://api.github.com/users/hadley/received_events User      FALSE
+## 26 https://api.github.com/users/hadley/received_events User      FALSE
+## 27 https://api.github.com/users/hadley/received_events User      FALSE
+## 28 https://api.github.com/users/hadley/received_events User      FALSE
+## 29 https://api.github.com/users/hadley/received_events User      FALSE
+## 30 https://api.github.com/users/hadley/received_events User      FALSE
+</code></pre>
+
+<pre><code class="r">str(d$owner)
+</code></pre>
+
+<pre><code>## &#39;data.frame&#39;:    30 obs. of  17 variables:
+##  $ login              : chr  &quot;hadley&quot; &quot;hadley&quot; &quot;hadley&quot; &quot;hadley&quot; ...
+##  $ id                 : int  4196 4196 4196 4196 4196 4196 4196 4196 4196 4196 ...
+##  $ avatar_url         : chr  &quot;https://avatars.githubusercontent.com/u/4196?v=3&quot; &quot;https://avatars.githubusercontent.com/u/4196?v=3&quot; &quot;https://avatars.githubusercontent.com/u/4196?v=3&quot; &quot;https://avatars.githubusercontent.com/u/4196?v=3&quot; ...
+##  $ gravatar_id        : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ url                : chr  &quot;https://api.github.com/users/hadley&quot; &quot;https://api.github.com/users/hadley&quot; &quot;https://api.github.com/users/hadley&quot; &quot;https://api.github.com/users/hadley&quot; ...
+##  $ html_url           : chr  &quot;https://github.com/hadley&quot; &quot;https://github.com/hadley&quot; &quot;https://github.com/hadley&quot; &quot;https://github.com/hadley&quot; ...
+##  $ followers_url      : chr  &quot;https://api.github.com/users/hadley/followers&quot; &quot;https://api.github.com/users/hadley/followers&quot; &quot;https://api.github.com/users/hadley/followers&quot; &quot;https://api.github.com/users/hadley/followers&quot; ...
+##  $ following_url      : chr  &quot;https://api.github.com/users/hadley/following{/other_user}&quot; &quot;https://api.github.com/users/hadley/following{/other_user}&quot; &quot;https://api.github.com/users/hadley/following{/other_user}&quot; &quot;https://api.github.com/users/hadley/following{/other_user}&quot; ...
+##  $ gists_url          : chr  &quot;https://api.github.com/users/hadley/gists{/gist_id}&quot; &quot;https://api.github.com/users/hadley/gists{/gist_id}&quot; &quot;https://api.github.com/users/hadley/gists{/gist_id}&quot; &quot;https://api.github.com/users/hadley/gists{/gist_id}&quot; ...
+##  $ starred_url        : chr  &quot;https://api.github.com/users/hadley/starred{/owner}{/repo}&quot; &quot;https://api.github.com/users/hadley/starred{/owner}{/repo}&quot; &quot;https://api.github.com/users/hadley/starred{/owner}{/repo}&quot; &quot;https://api.github.com/users/hadley/starred{/owner}{/repo}&quot; ...
+##  $ subscriptions_url  : chr  &quot;https://api.github.com/users/hadley/subscriptions&quot; &quot;https://api.github.com/users/hadley/subscriptions&quot; &quot;https://api.github.com/users/hadley/subscriptions&quot; &quot;https://api.github.com/users/hadley/subscriptions&quot; ...
+##  $ organizations_url  : chr  &quot;https://api.github.com/users/hadley/orgs&quot; &quot;https://api.github.com/users/hadley/orgs&quot; &quot;https://api.github.com/users/hadley/orgs&quot; &quot;https://api.github.com/users/hadley/orgs&quot; ...
+##  $ repos_url          : chr  &quot;https://api.github.com/users/hadley/repos&quot; &quot;https://api.github.com/users/hadley/repos&quot; &quot;https://api.github.com/users/hadley/repos&quot; &quot;https://api.github.com/users/hadley/repos&quot; ...
+##  $ events_url         : chr  &quot;https://api.github.com/users/hadley/events{/privacy}&quot; &quot;https://api.github.com/users/hadley/events{/privacy}&quot; &quot;https://api.github.com/users/hadley/events{/privacy}&quot; &quot;https://api.github.com/users/hadley/events{/privacy}&quot; ...
+##  $ received_events_url: chr  &quot;https://api.github.com/users/hadley/received_events&quot; &quot;https://api.github.com/users/hadley/received_events&quot; &quot;https://api.github.com/users/hadley/received_events&quot; &quot;https://api.github.com/users/hadley/received_events&quot; ...
+##  $ type               : chr  &quot;User&quot; &quot;User&quot; &quot;User&quot; &quot;User&quot; ...
+##  $ site_admin         : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
+</code></pre>
+
+</body>
+
+</html>

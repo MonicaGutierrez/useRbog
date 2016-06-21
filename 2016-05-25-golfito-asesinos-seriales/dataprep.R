@@ -63,6 +63,10 @@ d$Country[d$Name == "Johann Otto Hoch"] <- "Germany"
 d$Country[d$Name == "Yoshio Kodaira"] <- "Japan"
 d$Country[d$Name == "Volker Eckert"] <- "Germany"
 
+library(tidyr)
+x <- separate(d,Years.active, sep=" to ",c("from","to"))
+
+
 unique(d$Country)
 
 write.csv(d,"serial-killers-clean.csv",row.names = FALSE)
