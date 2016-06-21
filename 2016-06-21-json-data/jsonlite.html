@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<title>Obtener datos</title>
+<title>jsonlite: Leer y escribir json</title>
 
 <script type="text/javascript">
 window.onload = function() {
@@ -201,11 +201,15 @@ hr {
 </head>
 
 <body>
+<h1>jsonlite: Leer y escribir json</h1>
+
 <pre><code class="r">library(jsonlite)
 library(httr)
+</code></pre>
 
+<h2>Leer json desde un texto</h2>
 
-txt &lt;- &quot;[12, 3, 7]&quot;
+<pre><code class="r">txt &lt;- &quot;[12, 3, 7]&quot;
 x &lt;- fromJSON(txt)
 x
 </code></pre>
@@ -215,9 +219,10 @@ x
 
 <h1>Obtener datos</h1>
 
-<pre><code class="r">#get data
-d &lt;- fromJSON(&quot;https://api.github.com/users/hadley/orgs&quot;)
+<p>También lee dataframes directamente</p>
 
+<pre><code class="r">d &lt;- fromJSON(&quot;https://api.github.com/users/hadley/orgs&quot;)
+#it&#39;s a data frame
 str(d)
 </code></pre>
 
@@ -235,8 +240,7 @@ str(d)
 ##  $ description       : chr  &quot;&quot; NA NA &quot;&quot; ...
 </code></pre>
 
-<pre><code class="r">#it&#39;s a data frame
-names(d)
+<pre><code class="r">names(d)
 </code></pre>
 
 <pre><code>##  [1] &quot;login&quot;              &quot;id&quot;                 &quot;url&quot;               
@@ -245,14 +249,11 @@ names(d)
 ## [10] &quot;avatar_url&quot;         &quot;description&quot;
 </code></pre>
 
-<pre><code class="r">d$login
-</code></pre>
-
-<pre><code>## [1] &quot;ggobi&quot;     &quot;rstudio&quot;   &quot;rstats&quot;    &quot;ropensci&quot;  &quot;rjournal&quot;  &quot;rstats-db&quot;
-</code></pre>
+<blockquote>
+<p>Ojo puede haber data.frames no puros&hellip; donde las &ldquo;celdas&rdquo; son vectores o también data.frames. Esto puede ser problemático al usar otras funciones sobre los data.frames.</p>
+</blockquote>
 
 <pre><code class="r">d &lt;- fromJSON(&quot;https://api.github.com/users/hadley/repos&quot;)
-
 #it&#39;s a data frame...
 names(d)
 </code></pre>
@@ -302,7 +303,7 @@ names(d)
 ## [29] &quot;data-stride&quot;           &quot;decumar&quot;
 </code></pre>
 
-<pre><code class="r">#...with has a nested data frame
+<pre><code class="r">#... it has a nested data frame
 names(d$owner)
 </code></pre>
 

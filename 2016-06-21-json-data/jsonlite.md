@@ -1,10 +1,15 @@
+# jsonlite: Leer y escribir json
 
 
 ```r
 library(jsonlite)
 library(httr)
+```
+
+## Leer json desde un texto
 
 
+```r
 txt <- "[12, 3, 7]"
 x <- fromJSON(txt)
 x
@@ -16,11 +21,12 @@ x
 
 # Obtener datos
 
+También lee dataframes directamente
+
 
 ```r
-#get data
 d <- fromJSON("https://api.github.com/users/hadley/orgs")
-
+#it's a data frame
 str(d)
 ```
 
@@ -40,7 +46,6 @@ str(d)
 ```
 
 ```r
-#it's a data frame
 names(d)
 ```
 
@@ -51,17 +56,11 @@ names(d)
 ## [10] "avatar_url"         "description"
 ```
 
-```r
-d$login
-```
+> Ojo puede haber data.frames no puros... donde las "celdas" son vectores o también data.frames. Esto puede ser problemático al usar otras funciones sobre los data.frames.
 
-```
-## [1] "ggobi"     "rstudio"   "rstats"    "ropensci"  "rjournal"  "rstats-db"
-```
 
 ```r
 d <- fromJSON("https://api.github.com/users/hadley/repos")
-
 #it's a data frame...
 names(d)
 ```
@@ -115,7 +114,7 @@ d$name
 ```
 
 ```r
-#...with has a nested data frame
+#... it has a nested data frame
 names(d$owner)
 ```
 
