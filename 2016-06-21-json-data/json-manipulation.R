@@ -14,6 +14,7 @@ library(rlist)
 m <- fromJSON("data/meetup-members.json")
 
 
+#' +echo=FALSE
 str(m)
 str(m, max.level = 1)
 str(m, max.level = 2)

@@ -217,7 +217,7 @@ x
 <pre><code>## [1] 12  3  7
 </code></pre>
 
-<h1>Obtener datos</h1>
+<h2>Leer json desde URL</h2>
 
 <p>También lee dataframes directamente</p>
 
@@ -397,10 +397,10 @@ names(d$owner)
 ##  $ has_downloads    : logi  TRUE TRUE TRUE TRUE TRUE TRUE ...
 ##  $ has_wiki         : logi  TRUE TRUE TRUE TRUE TRUE TRUE ...
 ##  $ has_pages        : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
-##  $ forks_count      : int  6 0 2 827 0 19 23 1 0 31 ...
+##  $ forks_count      : int  6 0 2 828 0 19 23 1 0 31 ...
 ##  $ mirror_url       : logi  NA NA NA NA NA NA ...
 ##  $ open_issues_count: int  0 0 0 94 0 18 3 0 0 4 ...
-##  $ forks            : int  6 0 2 827 0 19 23 1 0 31 ...
+##  $ forks            : int  6 0 2 828 0 19 23 1 0 31 ...
 ##  $ open_issues      : int  0 0 0 94 0 18 3 0 0 4 ...
 ##  $ watchers         : int  24 13 0 777 3 61 39 7 3 238 ...
 ##  $ default_branch   : chr  &quot;master&quot; &quot;master&quot; &quot;master&quot; &quot;master&quot; ...
@@ -773,6 +773,1723 @@ names(d$owner)
 ##  $ received_events_url: chr  &quot;https://api.github.com/users/hadley/received_events&quot; &quot;https://api.github.com/users/hadley/received_events&quot; &quot;https://api.github.com/users/hadley/received_events&quot; &quot;https://api.github.com/users/hadley/received_events&quot; ...
 ##  $ type               : chr  &quot;User&quot; &quot;User&quot; &quot;User&quot; &quot;User&quot; ...
 ##  $ site_admin         : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
+</code></pre>
+
+<h2>Leer desde un archivo</h2>
+
+<pre><code class="r">x &lt;- fromJSON(&quot;data/meetup-members.json&quot;)
+str(x)
+</code></pre>
+
+<pre><code>## List of 2
+##  $ results:&#39;data.frame&#39;: 200 obs. of  18 variables:
+##   ..$ country       : chr [1:200] &quot;co&quot; &quot;co&quot; &quot;us&quot; &quot;co&quot; ...
+##   ..$ city          : chr [1:200] &quot;Bogotá&quot; &quot;Bogotá&quot; &quot;San Francisco&quot; &quot;Bogotá&quot; ...
+##   ..$ topics        :List of 200
+##   .. ..$ :&#39;data.frame&#39;:  4 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:4] &quot;web-development&quot; &quot;javascript&quot; &quot;software-architecture&quot; &quot;critical-thinking&quot;
+##   .. .. ..$ name  : chr [1:4] &quot;Web Development&quot; &quot;JavaScript&quot; &quot;Software Architecture&quot; &quot;Critical Thinking&quot;
+##   .. .. ..$ id    : int [1:4] 15582 7029 56473 15544
+##   .. ..$ :&#39;data.frame&#39;:  27 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:27] &quot;art&quot; &quot;education&quot; &quot;newtech&quot; &quot;craftswap&quot; ...
+##   .. .. ..$ name  : chr [1:27] &quot;Art&quot; &quot;Education&quot; &quot;New Technology&quot; &quot;Crafts&quot; ...
+##   .. .. ..$ id    : int [1:27] 1502 8476 9696 10099 10454 10581 15227 15321 15635 15720 ...
+##   .. ..$ :&#39;data.frame&#39;:  29 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:29] &quot;future&quot; &quot;newtech&quot; &quot;web&quot; &quot;opensource&quot; ...
+##   .. .. ..$ name  : chr [1:29] &quot;Futurology&quot; &quot;New Technology&quot; &quot;Web Technology&quot; &quot;Open Source&quot; ...
+##   .. .. ..$ id    : int [1:29] 429 9696 10209 563 3833 10553 19882 48471 38724 1064 ...
+##   .. ..$ :&#39;data.frame&#39;:  33 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:33] &quot;latinmusic&quot; &quot;musicians&quot; &quot;opensource&quot; &quot;hiking&quot; ...
+##   .. .. ..$ name  : chr [1:33] &quot;Latin Music&quot; &quot;Musicians&quot; &quot;Open Source&quot; &quot;Hiking&quot; ...
+##   .. .. ..$ id    : int [1:33] 130 173 563 638 1122 1502 3833 8652 15018 15083 ...
+##   .. ..$ :&#39;data.frame&#39;:  0 obs. of  0 variables
+##   .. ..$ :&#39;data.frame&#39;:  47 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:47] &quot;science&quot; &quot;environment&quot; &quot;musicians&quot; &quot;esl&quot; ...
+##   .. .. ..$ name  : chr [1:47] &quot;Science&quot; &quot;Environment&quot; &quot;Musicians&quot; &quot;English as a Second Language&quot; ...
+##   .. .. ..$ id    : int [1:47] 85 89 173 182 206 223 242 1201 1502 2349 ...
+##   .. ..$ :&#39;data.frame&#39;:  50 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:50] &quot;latinmusic&quot; &quot;musicians&quot; &quot;esl&quot; &quot;digcam&quot; ...
+##   .. .. ..$ name  : chr [1:50] &quot;Latin Music&quot; &quot;Musicians&quot; &quot;English as a Second Language&quot; &quot;Digital Photography&quot; ...
+##   .. .. ..$ id    : int [1:50] 130 173 182 206 223 242 407 579 611 1122 ...
+##   .. ..$ :&#39;data.frame&#39;:  5 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:5] &quot;art&quot; &quot;education&quot; &quot;social&quot; &quot;community&quot; ...
+##   .. .. ..$ name  : chr [1:5] &quot;Art&quot; &quot;Education&quot; &quot;Social&quot; &quot;Community&quot; ...
+##   .. .. ..$ id    : int [1:5] 1502 8476 10581 15227 15236
+##   .. ..$ :&#39;data.frame&#39;:  10 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:10] &quot;esl&quot; &quot;innovation&quot; &quot;softwaredev&quot; &quot;newtech&quot; ...
+##   .. .. ..$ name  : chr [1:10] &quot;English as a Second Language&quot; &quot;Innovation&quot; &quot;Software Development&quot; &quot;New Technology&quot; ...
+##   .. .. ..$ id    : int [1:10] 182 1954 3833 9696 10538 16223 17232 23199 28980 30928
+##   .. ..$ :&#39;data.frame&#39;:  8 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:8] &quot;gameprog&quot; &quot;softwaredev&quot; &quot;edtech&quot; &quot;newtech&quot; ...
+##   .. .. ..$ name  : chr [1:8] &quot;Game Programming&quot; &quot;Software Development&quot; &quot;Education &amp; Technology&quot; &quot;New Technology&quot; ...
+##   .. .. ..$ id    : int [1:8] 3287 3833 7203 9696 15018 19225 21429 48471
+##   .. ..$ :&#39;data.frame&#39;:  50 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:50] &quot;environment&quot; &quot;latinmusic&quot; &quot;musicians&quot; &quot;esl&quot; ...
+##   .. .. ..$ name  : chr [1:50] &quot;Environment&quot; &quot;Latin Music&quot; &quot;Musicians&quot; &quot;English as a Second Language&quot; ...
+##   .. .. ..$ id    : int [1:50] 89 130 173 182 185 206 211 223 242 387 ...
+##   .. ..$ :&#39;data.frame&#39;:  50 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:50] &quot;statistical-computing&quot; &quot;big-data&quot; &quot;data-analytics&quot; &quot;computer-programming&quot; ...
+##   .. .. ..$ name  : chr [1:50] &quot;Statistical Computing&quot; &quot;Big Data&quot; &quot;Data Analytics&quot; &quot;Computer programming&quot; ...
+##   .. .. ..$ id    : int [1:50] 15280 18062 30928 48471 98380 115768 115913 17558 15360 19146 ...
+##   .. ..$ :&#39;data.frame&#39;:  14 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:14] &quot;prodev&quot; &quot;small-business-marketing-strategy&quot; &quot;innovation&quot; &quot;online-marketing&quot; ...
+##   .. .. ..$ name  : chr [1:14] &quot;Professional Development&quot; &quot;Small Business Marketing Strategy&quot; &quot;Innovation&quot; &quot;Online Marketing&quot; ...
+##   .. .. ..$ id    : int [1:14] 3880 17325 1954 15585 21681 15116 15099 1998 563 9696 ...
+##   .. ..$ :&#39;data.frame&#39;:  50 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:50] &quot;environment&quot; &quot;esl&quot; &quot;french&quot; &quot;digcam&quot; ...
+##   .. .. ..$ name  : chr [1:50] &quot;Environment&quot; &quot;English as a Second Language&quot; &quot;French Language&quot; &quot;Digital Photography&quot; ...
+##   .. .. ..$ id    : int [1:50] 89 182 185 206 223 242 408 485 611 638 ...
+##   .. ..$ :&#39;data.frame&#39;:  0 obs. of  0 variables
+##   .. ..$ :&#39;data.frame&#39;:  50 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:50] &quot;science&quot; &quot;environment&quot; &quot;latinmusic&quot; &quot;musicians&quot; ...
+##   .. .. ..$ name  : chr [1:50] &quot;Science&quot; &quot;Environment&quot; &quot;Latin Music&quot; &quot;Musicians&quot; ...
+##   .. .. ..$ id    : int [1:50] 85 89 130 173 182 185 206 211 223 242 ...
+##   .. ..$ :&#39;data.frame&#39;:  33 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:33] &quot;opensource&quot; &quot;softwaredev&quot; &quot;javascript&quot; &quot;newtech&quot; ...
+##   .. .. ..$ name  : chr [1:33] &quot;Open Source&quot; &quot;Software Development&quot; &quot;JavaScript&quot; &quot;New Technology&quot; ...
+##   .. .. ..$ id    : int [1:33] 563 3833 7029 9696 9886 15582 21441 48471 85951 18062 ...
+##   .. ..$ :&#39;data.frame&#39;:  8 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:8] &quot;art&quot; &quot;real-estate&quot; &quot;finance&quot; &quot;bilingual-spanish-english&quot; ...
+##   .. .. ..$ name  : chr [1:8] &quot;Art&quot; &quot;Real Estate&quot; &quot;Finance&quot; &quot;Bilingual Spanish/English&quot; ...
+##   .. .. ..$ id    : int [1:8] 1502 18964 22467 22885 23274 23884 25698 17558
+##   .. ..$ :&#39;data.frame&#39;:  14 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:14] &quot;creative&quot; &quot;language-exchange&quot; &quot;latinmusic&quot; &quot;opensource&quot; ...
+##   .. .. ..$ name  : chr [1:14] &quot;Creativity&quot; &quot;Language Exchange&quot; &quot;Latin Music&quot; &quot;Open Source&quot; ...
+##   .. .. ..$ id    : int [1:14] 36229 26212 130 563 48471 15401 30928 15167 10209 9696 ...
+##   .. ..$ :&#39;data.frame&#39;:  9 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:9] &quot;big-data&quot; &quot;machine-learning&quot; &quot;data-science&quot; &quot;data-analytics&quot; ...
+##   .. .. ..$ name  : chr [1:9] &quot;Big Data&quot; &quot;Machine Learning&quot; &quot;Data Science&quot; &quot;Data Analytics&quot; ...
+##   .. .. ..$ id    : int [1:9] 18062 29971 102811 30928 38458 55324 15280 115913 383411
+##   .. ..$ :&#39;data.frame&#39;:  9 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:9] &quot;photo&quot; &quot;art&quot; &quot;newtech&quot; &quot;spirituality&quot; ...
+##   .. .. ..$ name  : chr [1:9] &quot;Photography&quot; &quot;Art&quot; &quot;New Technology&quot; &quot;Spirituality&quot; ...
+##   .. .. ..$ id    : int [1:9] 223 1502 9696 10290 10306 10581 15046 15236 15992
+##   .. ..$ :&#39;data.frame&#39;:  10 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:10] &quot;edtech&quot; &quot;newtech&quot; &quot;web-development&quot; &quot;computer-programming&quot; ...
+##   .. .. ..$ name  : chr [1:10] &quot;Education &amp; Technology&quot; &quot;New Technology&quot; &quot;Web Development&quot; &quot;Computer programming&quot; ...
+##   .. .. ..$ id    : int [1:10] 7203 9696 15582 48471 206 15280 16613 18062 30928 98380
+##   .. ..$ :&#39;data.frame&#39;:  0 obs. of  0 variables
+##   .. ..$ :&#39;data.frame&#39;:  6 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:6] &quot;innovation&quot; &quot;projectmgmt&quot; &quot;businessintell&quot; &quot;creative-writing&quot; ...
+##   .. .. ..$ name  : chr [1:6] &quot;Innovation&quot; &quot;Project Management&quot; &quot;Business Intelligence&quot; &quot;Creative Writing&quot; ...
+##   .. .. ..$ id    : int [1:6] 1954 3438 10538 15322 18167 44584
+##   .. ..$ :&#39;data.frame&#39;:  31 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:31] &quot;weightloss&quot; &quot;fitness&quot; &quot;robotics&quot; &quot;movies&quot; ...
+##   .. .. ..$ name  : chr [1:31] &quot;Weight Loss&quot; &quot;Fitness&quot; &quot;Robotics&quot; &quot;Watching Movies&quot; ...
+##   .. .. ..$ id    : int [1:31] 240 242 682 1201 1589 1954 1998 3833 3880 7203 ...
+##   .. ..$ :&#39;data.frame&#39;:  12 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:12] &quot;opensource&quot; &quot;cloud-computing&quot; &quot;statistical-computing&quot; &quot;big-data&quot; ...
+##   .. .. ..$ name  : chr [1:12] &quot;Open Source&quot; &quot;Cloud Computing&quot; &quot;Statistical Computing&quot; &quot;Big Data&quot; ...
+##   .. .. ..$ id    : int [1:12] 563 15167 15280 18062 30928 98380 115768 115913 417 3833 ...
+##   .. ..$ :&#39;data.frame&#39;:  50 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:50] &quot;webstandards&quot; &quot;opensource&quot; &quot;webdesign&quot; &quot;softwaredev&quot; ...
+##   .. .. ..$ name  : chr [1:50] &quot;Web Standards&quot; &quot;Open Source&quot; &quot;Web Design&quot; &quot;Software Development&quot; ...
+##   .. .. ..$ id    : int [1:50] 417 563 659 3833 7029 9696 9886 15582 16216 21441 ...
+##   .. ..$ :&#39;data.frame&#39;:  10 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:10] &quot;opensource&quot; &quot;databasepro&quot; &quot;newtech&quot; &quot;web&quot; ...
+##   .. .. ..$ name  : chr [1:10] &quot;Open Source&quot; &quot;Database Professionals&quot; &quot;New Technology&quot; &quot;Web Technology&quot; ...
+##   .. .. ..$ id    : int [1:10] 563 1245 9696 10209 15401 16216 23199 48471 78565 124668
+##   .. ..$ :&#39;data.frame&#39;:  0 obs. of  0 variables
+##   .. ..$ :&#39;data.frame&#39;:  4 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:4] &quot;statistical-computing&quot; &quot;r-project-for-statistical-computing&quot; &quot;programming-in-r&quot; &quot;applied-statistics&quot;
+##   .. .. ..$ name  : chr [1:4] &quot;Statistical Computing&quot; &quot;R Project for Statistical Computing&quot; &quot;Programming in R&quot; &quot;Applied Statistics&quot;
+##   .. .. ..$ id    : int [1:4] 15280 98380 115768 115913
+##   .. ..$ :&#39;data.frame&#39;:  50 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:50] &quot;environment&quot; &quot;latinmusic&quot; &quot;esl&quot; &quot;photo&quot; ...
+##   .. .. ..$ name  : chr [1:50] &quot;Environment&quot; &quot;Latin Music&quot; &quot;English as a Second Language&quot; &quot;Photography&quot; ...
+##   .. .. ..$ id    : int [1:50] 89 130 182 223 234 242 563 611 933 1122 ...
+##   .. ..$ :&#39;data.frame&#39;:  0 obs. of  0 variables
+##   .. ..$ :&#39;data.frame&#39;:  50 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:50] &quot;test-driven-development&quot; &quot;learning&quot; &quot;intellectual-discussion&quot; &quot;computer-programming&quot; ...
+##   .. .. ..$ name  : chr [1:50] &quot;Test Driven Development&quot; &quot;Learning&quot; &quot;Intellectual Discussion&quot; &quot;Computer programming&quot; ...
+##   .. .. ..$ id    : int [1:50] 25435 18296 15083 48471 8476 118991 7203 37339 49687 122939 ...
+##   .. ..$ :&#39;data.frame&#39;:  5 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:5] &quot;edtech&quot; &quot;education&quot; &quot;big-data&quot; &quot;learning&quot; ...
+##   .. .. ..$ name  : chr [1:5] &quot;Education &amp; Technology&quot; &quot;Education&quot; &quot;Big Data&quot; &quot;Learning&quot; ...
+##   .. .. ..$ id    : int [1:5] 7203 8476 18062 18296 65780
+##   .. ..$ :&#39;data.frame&#39;:  23 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:23] &quot;science&quot; &quot;innovation&quot; &quot;edtech&quot; &quot;eurofootball&quot; ...
+##   .. .. ..$ name  : chr [1:23] &quot;Science&quot; &quot;Innovation&quot; &quot;Education &amp; Technology&quot; &quot;European Football&quot; ...
+##   .. .. ..$ id    : int [1:23] 85 1954 7203 7277 9696 9753 9772 14990 15067 15099 ...
+##   .. ..$ :&#39;data.frame&#39;:  0 obs. of  0 variables
+##   .. ..$ :&#39;data.frame&#39;:  50 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:50] &quot;hiking&quot; &quot;robotics&quot; &quot;culturalcreatives&quot; &quot;meditation&quot; ...
+##   .. .. ..$ name  : chr [1:50] &quot;Hiking&quot; &quot;Robotics&quot; &quot;Cultural Creatives&quot; &quot;Meditation&quot; ...
+##   .. .. ..$ id    : int [1:50] 638 682 1138 1322 1954 1998 3287 3336 3438 3833 ...
+##   .. ..$ :&#39;data.frame&#39;:  10 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:10] &quot;newtech&quot; &quot;cloud-computing&quot; &quot;mobile-technology&quot; &quot;big-data&quot; ...
+##   .. .. ..$ name  : chr [1:10] &quot;New Technology&quot; &quot;Cloud Computing&quot; &quot;Mobile Technology&quot; &quot;Big Data&quot; ...
+##   .. .. ..$ id    : int [1:10] 9696 15167 16216 18062 30928 36167 48471 98380 115768 115913
+##   .. ..$ :&#39;data.frame&#39;:  2 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:2] &quot;livemusic&quot; &quot;outdoors&quot;
+##   .. .. ..$ name  : chr [1:2] &quot;Live Music&quot; &quot;Outdoors&quot;
+##   .. .. ..$ id    : int [1:2] 8652 15046
+##   .. ..$ :&#39;data.frame&#39;:  2 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:2] &quot;art&quot; &quot;business-networking&quot;
+##   .. .. ..$ name  : chr [1:2] &quot;Art&quot; &quot;professional-networking&quot;
+##   .. .. ..$ id    : int [1:2] 1502 15236
+##   .. ..$ :&#39;data.frame&#39;:  0 obs. of  0 variables
+##   .. ..$ :&#39;data.frame&#39;:  3 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:3] &quot;softwaredev&quot; &quot;newtech&quot; &quot;mobile-development&quot;
+##   .. .. ..$ name  : chr [1:3] &quot;Software Development&quot; &quot;New Technology&quot; &quot;Mobile Development&quot;
+##   .. .. ..$ id    : int [1:3] 3833 9696 21441
+##   .. ..$ :&#39;data.frame&#39;:  49 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:49] &quot;latinmusic&quot; &quot;classical&quot; &quot;esl&quot; &quot;vegan&quot; ...
+##   .. .. ..$ name  : chr [1:49] &quot;Latin Music&quot; &quot;Classical Music&quot; &quot;English as a Second Language&quot; &quot;Vegan&quot; ...
+##   .. .. ..$ id    : int [1:49] 130 133 182 408 1122 1201 1322 1502 1954 1998 ...
+##   .. ..$ :&#39;data.frame&#39;:  5 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:5] &quot;opensource&quot; &quot;softwaredev&quot; &quot;data-analytics&quot; &quot;computer-programming&quot; ...
+##   .. .. ..$ name  : chr [1:5] &quot;Open Source&quot; &quot;Software Development&quot; &quot;Data Analytics&quot; &quot;Computer programming&quot; ...
+##   .. .. ..$ id    : int [1:5] 563 3833 30928 48471 115768
+##   .. ..$ :&#39;data.frame&#39;:  33 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:33] &quot;esl&quot; &quot;english-language&quot; &quot;bogota&quot; &quot;travel&quot; ...
+##   .. .. ..$ name  : chr [1:33] &quot;English as a Second Language&quot; &quot;English Language&quot; &quot;Bogota&quot; &quot;Travel&quot; ...
+##   .. .. ..$ id    : int [1:33] 182 25698 152753 1998 10454 17571 235 713 1201 1273 ...
+##   .. ..$ :&#39;data.frame&#39;:  3 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:3] &quot;r-project-for-statistical-computing&quot; &quot;programming-in-r&quot; &quot;applied-statistics&quot;
+##   .. .. ..$ name  : chr [1:3] &quot;R Project for Statistical Computing&quot; &quot;Programming in R&quot; &quot;Applied Statistics&quot;
+##   .. .. ..$ id    : int [1:3] 98380 115768 115913
+##   .. ..$ :&#39;data.frame&#39;:  0 obs. of  0 variables
+##   .. ..$ :&#39;data.frame&#39;:  17 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:17] &quot;big-data&quot; &quot;data-analytics&quot; &quot;r-project-for-statistical-computing&quot; &quot;programming-in-r&quot; ...
+##   .. .. ..$ name  : chr [1:17] &quot;Big Data&quot; &quot;Data Analytics&quot; &quot;R Project for Statistical Computing&quot; &quot;Programming in R&quot; ...
+##   .. .. ..$ id    : int [1:17] 18062 30928 98380 115768 115913 182 235 1998 8652 10454 ...
+##   .. ..$ :&#39;data.frame&#39;:  0 obs. of  0 variables
+##   .. ..$ :&#39;data.frame&#39;:  0 obs. of  0 variables
+##   .. ..$ :&#39;data.frame&#39;:  15 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:15] &quot;courses-and-workshops&quot; &quot;edtech&quot; &quot;communication-skills&quot; &quot;prodev&quot; ...
+##   .. .. ..$ name  : chr [1:15] &quot;Courses and Workshops&quot; &quot;Education &amp; Technology&quot; &quot;Communication Skills&quot; &quot;Professional Development&quot; ...
+##   .. .. ..$ id    : int [1:15] 20629 7203 20923 3880 26643 17635 63675 1481 1589 15029 ...
+##   .. ..$ :&#39;data.frame&#39;:  3 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:3] &quot;r-project-for-statistical-computing&quot; &quot;programming-in-r&quot; &quot;applied-statistics&quot;
+##   .. .. ..$ name  : chr [1:3] &quot;R Project for Statistical Computing&quot; &quot;Programming in R&quot; &quot;Applied Statistics&quot;
+##   .. .. ..$ id    : int [1:3] 98380 115768 115913
+##   .. ..$ :&#39;data.frame&#39;:  0 obs. of  0 variables
+##   .. ..$ :&#39;data.frame&#39;:  28 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:28] &quot;innovation&quot; &quot;softwaredev&quot; &quot;prodev&quot; &quot;newtech&quot; ...
+##   .. .. ..$ name  : chr [1:28] &quot;Innovation&quot; &quot;Software Development&quot; &quot;Professional Development&quot; &quot;New Technology&quot; ...
+##   .. .. ..$ id    : int [1:28] 1954 3833 3880 9696 15401 15585 15992 16216 17232 17301 ...
+##   .. ..$ :&#39;data.frame&#39;:  2 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:2] &quot;self-improvement&quot; &quot;softwaredev&quot;
+##   .. .. ..$ name  : chr [1:2] &quot;Self-Improvement&quot; &quot;Software Development&quot;
+##   .. .. ..$ id    : int [1:2] 3336 3833
+##   .. ..$ :&#39;data.frame&#39;:  18 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:18] &quot;self-empowerment&quot; &quot;wellness&quot; &quot;healthy-living&quot; &quot;technical-analysis&quot; ...
+##   .. .. ..$ name  : chr [1:18] &quot;Self-Empowerment&quot; &quot;Wellness&quot; &quot;Healthy Living&quot; &quot;Technical Analysis&quot; ...
+##   .. .. ..$ id    : int [1:18] 38757 10306 20221 17232 3880 26643 17635 1954 10538 21681 ...
+##   .. ..$ :&#39;data.frame&#39;:  31 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:31] &quot;esl&quot; &quot;bilingual-spanish-english&quot; &quot;japanese-culture&quot; &quot;international-friends&quot; ...
+##   .. .. ..$ name  : chr [1:31] &quot;English as a Second Language&quot; &quot;Bilingual Spanish/English&quot; &quot;Japanese Culture&quot; &quot;International Friends&quot; ...
+##   .. .. ..$ id    : int [1:31] 182 22885 30366 50881 563 1998 3336 7203 7277 9696 ...
+##   .. ..$ :&#39;data.frame&#39;:  34 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:34] &quot;scifi&quot; &quot;webdesign&quot; &quot;graphicdesign&quot; &quot;databasepro&quot; ...
+##   .. .. ..$ name  : chr [1:34] &quot;Sci-Fi/Fantasy&quot; &quot;Web Design&quot; &quot;Graphic Design&quot; &quot;Database Professionals&quot; ...
+##   .. .. ..$ id    : int [1:34] 317 659 781 1245 2767 3287 15113 15321 15322 15360 ...
+##   .. ..$ :&#39;data.frame&#39;:  6 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:6] &quot;big-data&quot; &quot;technology-startups&quot; &quot;web&quot; &quot;newtech&quot; ...
+##   .. .. ..$ name  : chr [1:6] &quot;Big Data&quot; &quot;Technology Startups&quot; &quot;Web Technology&quot; &quot;New Technology&quot; ...
+##   .. .. ..$ id    : int [1:6] 18062 108403 10209 9696 48471 127567
+##   .. ..$ :&#39;data.frame&#39;:  14 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:14] &quot;softwaredev&quot; &quot;edtech&quot; &quot;newtech&quot; &quot;web-development&quot; ...
+##   .. .. ..$ name  : chr [1:14] &quot;Software Development&quot; &quot;Education &amp; Technology&quot; &quot;New Technology&quot; &quot;Web Development&quot; ...
+##   .. .. ..$ id    : int [1:14] 3833 7203 9696 15582 127567 563 7029 15167 16216 78565 ...
+##   .. ..$ :&#39;data.frame&#39;:  50 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:50] &quot;environment&quot; &quot;latinmusic&quot; &quot;musicians&quot; &quot;esl&quot; ...
+##   .. .. ..$ name  : chr [1:50] &quot;Environment&quot; &quot;Latin Music&quot; &quot;Musicians&quot; &quot;English as a Second Language&quot; ...
+##   .. .. ..$ id    : int [1:50] 89 130 173 182 185 206 211 223 242 407 ...
+##   .. ..$ :&#39;data.frame&#39;:  20 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:20] &quot;coffee-lovers&quot; &quot;eating-drinking-talking-laughing-etc&quot; &quot;food-and-drink&quot; &quot;animation&quot; ...
+##   .. .. ..$ name  : chr [1:20] &quot;Coffee Lovers&quot; &quot;Eating, Drinking, Talking, Laughing, Etc&quot; &quot;Food and Drink&quot; &quot;Animation&quot; ...
+##   .. .. ..$ id    : int [1:20] 16951 19130 87548 1589 206 1201 32623 15992 4471 15018 ...
+##   .. ..$ :&#39;data.frame&#39;:  0 obs. of  0 variables
+##   .. ..$ :&#39;data.frame&#39;:  23 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:23] &quot;latinmusic&quot; &quot;opensource&quot; &quot;robotics&quot; &quot;innovation&quot; ...
+##   .. .. ..$ name  : chr [1:23] &quot;Latin Music&quot; &quot;Open Source&quot; &quot;Robotics&quot; &quot;Innovation&quot; ...
+##   .. .. ..$ id    : int [1:23] 130 563 682 1954 3833 3880 6640 7277 8652 9696 ...
+##   .. ..$ :&#39;data.frame&#39;:  15 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:15] &quot;opensource&quot; &quot;softwaredev&quot; &quot;newtech&quot; &quot;cloud-computing&quot; ...
+##   .. .. ..$ name  : chr [1:15] &quot;Open Source&quot; &quot;Software Development&quot; &quot;New Technology&quot; &quot;Cloud Computing&quot; ...
+##   .. .. ..$ id    : int [1:15] 563 3833 9696 15167 16216 21441 48471 18062 58162 24767 ...
+##   .. ..$ :&#39;data.frame&#39;:  1 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr &quot;applied-statistics&quot;
+##   .. .. ..$ name  : chr &quot;Applied Statistics&quot;
+##   .. .. ..$ id    : int 115913
+##   .. ..$ :&#39;data.frame&#39;:  35 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:35] &quot;esl&quot; &quot;opensource&quot; &quot;walkers&quot; &quot;paintball&quot; ...
+##   .. .. ..$ name  : chr [1:35] &quot;English as a Second Language&quot; &quot;Open Source&quot; &quot;Walking&quot; &quot;Paintball&quot; ...
+##   .. .. ..$ id    : int [1:35] 182 563 933 1073 1122 1954 3438 4471 9696 10209 ...
+##   .. ..$ :&#39;data.frame&#39;:  8 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:8] &quot;neuroscience&quot; &quot;edtech&quot; &quot;big-data&quot; &quot;bilingual-spanish-english&quot; ...
+##   .. .. ..$ name  : chr [1:8] &quot;Neuroscience&quot; &quot;Education &amp; Technology&quot; &quot;Big Data&quot; &quot;Bilingual Spanish/English&quot; ...
+##   .. .. ..$ id    : int [1:8] 6960 7203 18062 22885 29526 36229 50881 21808
+##   .. ..$ :&#39;data.frame&#39;:  16 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:16] &quot;opensource&quot; &quot;softwaredev&quot; &quot;newtech&quot; &quot;ria&quot; ...
+##   .. .. ..$ name  : chr [1:16] &quot;Open Source&quot; &quot;Software Development&quot; &quot;New Technology&quot; &quot;Rich Internet Applications&quot; ...
+##   .. .. ..$ id    : int [1:16] 563 3833 9696 9886 15582 21441 7029 16216 48471 36167 ...
+##   .. ..$ :&#39;data.frame&#39;:  0 obs. of  0 variables
+##   .. ..$ :&#39;data.frame&#39;:  30 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:30] &quot;ai&quot; &quot;robotics&quot; &quot;electronics&quot; &quot;newtech&quot; ...
+##   .. .. ..$ name  : chr [1:30] &quot;Artificial Intelligence&quot; &quot;Robotics&quot; &quot;Electronics&quot; &quot;New Technology&quot; ...
+##   .. .. ..$ id    : int [1:30] 456 682 7848 9696 9903 10438 17232 17635 18062 21123 ...
+##   .. ..$ :&#39;data.frame&#39;:  5 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:5] &quot;softwaredev&quot; &quot;social-media&quot; &quot;seo-search-engine-optimization&quot; &quot;data-analytics&quot; ...
+##   .. .. ..$ name  : chr [1:5] &quot;Software Development&quot; &quot;Social Media&quot; &quot;SEO (Search Engine Optimization)&quot; &quot;Data Analytics&quot; ...
+##   .. .. ..$ id    : int [1:5] 3833 15401 23199 30928 48471
+##   .. ..$ :&#39;data.frame&#39;:  5 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:5] &quot;christiansocial&quot; &quot;cloud-computing&quot; &quot;social-media&quot; &quot;data-analytics&quot; ...
+##   .. .. ..$ name  : chr [1:5] &quot;Christian Social&quot; &quot;Cloud Computing&quot; &quot;Social Media&quot; &quot;Data Analytics&quot; ...
+##   .. .. ..$ id    : int [1:5] 10187 15167 15401 30928 18062
+##   .. ..$ :&#39;data.frame&#39;:  46 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:46] &quot;science&quot; &quot;french&quot; &quot;opensource&quot; &quot;wine&quot; ...
+##   .. .. ..$ name  : chr [1:46] &quot;Science&quot; &quot;French Language&quot; &quot;Open Source&quot; &quot;Wine&quot; ...
+##   .. .. ..$ id    : int [1:46] 85 185 563 611 1122 1954 2767 3880 4471 6640 ...
+##   .. ..$ :&#39;data.frame&#39;:  10 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:10] &quot;art&quot; &quot;prodev&quot; &quot;newtech&quot; &quot;games&quot; ...
+##   .. .. ..$ name  : chr [1:10] &quot;Art&quot; &quot;Professional Development&quot; &quot;New Technology&quot; &quot;Games&quot; ...
+##   .. .. ..$ id    : int [1:10] 1502 3880 9696 15992 16216 16425 16899 17232 17635 21681
+##   .. ..$ :&#39;data.frame&#39;:  20 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:20] &quot;digcam&quot; &quot;photo&quot; &quot;opensource&quot; &quot;videogame&quot; ...
+##   .. .. ..$ name  : chr [1:20] &quot;Digital Photography&quot; &quot;Photography&quot; &quot;Open Source&quot; &quot;Video Games&quot; ...
+##   .. .. ..$ id    : int [1:20] 206 223 563 4471 9696 10209 10538 15029 15585 16216 ...
+##   .. ..$ :&#39;data.frame&#39;:  23 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:23] &quot;webstandards&quot; &quot;webdesign&quot; &quot;softwaredev&quot; &quot;newtech&quot; ...
+##   .. .. ..$ name  : chr [1:23] &quot;Web Standards&quot; &quot;Web Design&quot; &quot;Software Development&quot; &quot;New Technology&quot; ...
+##   .. .. ..$ id    : int [1:23] 417 659 3833 9696 9886 15582 16216 21441 36167 48471 ...
+##   .. ..$ :&#39;data.frame&#39;:  11 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:11] &quot;offleash&quot; &quot;japanese-cinema&quot; &quot;film&quot; &quot;cycling&quot; ...
+##   .. .. ..$ name  : chr [1:11] &quot;Off-Leash Dog Recreation&quot; &quot;Japanese Films&quot; &quot;Film&quot; &quot;Cycling&quot; ...
+##   .. .. ..$ id    : int [1:11] 9753 14980 15029 18617 22885 25375 28980 37663 49954 50881 ...
+##   .. ..$ :&#39;data.frame&#39;:  13 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:13] &quot;esl&quot; &quot;opensource&quot; &quot;neuroscience&quot; &quot;edtech&quot; ...
+##   .. .. ..$ name  : chr [1:13] &quot;English as a Second Language&quot; &quot;Open Source&quot; &quot;Neuroscience&quot; &quot;Education &amp; Technology&quot; ...
+##   .. .. ..$ id    : int [1:13] 182 563 6960 7203 9696 10454 10538 16433 26643 28980 ...
+##   .. ..$ :&#39;data.frame&#39;:  0 obs. of  0 variables
+##   .. ..$ :&#39;data.frame&#39;:  0 obs. of  0 variables
+##   .. ..$ :&#39;data.frame&#39;:  37 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:37] &quot;photo&quot; &quot;newtech&quot; &quot;social&quot; &quot;photography-classes&quot; ...
+##   .. .. ..$ name  : chr [1:37] &quot;Photography&quot; &quot;New Technology&quot; &quot;Social&quot; &quot;Photography Classes&quot; ...
+##   .. .. ..$ id    : int [1:37] 223 9696 10581 15043 15167 15731 16216 18062 18216 206 ...
+##   .. ..$ :&#39;data.frame&#39;:  0 obs. of  0 variables
+##   .. ..$ :&#39;data.frame&#39;:  3 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:3] &quot;music&quot; &quot;statistical-computing&quot; &quot;programming-in-r&quot;
+##   .. .. ..$ name  : chr [1:3] &quot;Music&quot; &quot;Statistical Computing&quot; &quot;Programming in R&quot;
+##   .. .. ..$ id    : int [1:3] 15018 15280 115768
+##   .. ..$ :&#39;data.frame&#39;:  0 obs. of  0 variables
+##   .. ..$ :&#39;data.frame&#39;:  3 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:3] &quot;application-development&quot; &quot;programming-in-r&quot; &quot;applied-statistics&quot;
+##   .. .. ..$ name  : chr [1:3] &quot;Application Development&quot; &quot;Programming in R&quot; &quot;Applied Statistics&quot;
+##   .. .. ..$ id    : int [1:3] 36167 115768 115913
+##   .. ..$ :&#39;data.frame&#39;:  6 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:6] &quot;digcam&quot; &quot;money&quot; &quot;singers&quot; &quot;business-strategy&quot; ...
+##   .. .. ..$ name  : chr [1:6] &quot;Digital Photography&quot; &quot;Money&quot; &quot;Singing&quot; &quot;Business Strategy&quot; ...
+##   .. .. ..$ id    : int [1:6] 206 15580 17301 17635 17993 98380
+##   .. ..$ :&#39;data.frame&#39;:  10 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:10] &quot;business-development&quot; &quot;business-strategy&quot; &quot;innovation&quot; &quot;walkers&quot; ...
+##   .. .. ..$ name  : chr [1:10] &quot;Business Development&quot; &quot;Business Strategy&quot; &quot;Innovation&quot; &quot;Walking&quot; ...
+##   .. .. ..$ id    : int [1:10] 18012 17635 1954 933 18617 22885 182 18062 9696 108403
+##   .. ..$ :&#39;data.frame&#39;:  23 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:23] &quot;softwaredev&quot; &quot;technology&quot; &quot;cloud-computing&quot; &quot;mobile-development&quot; ...
+##   .. .. ..$ name  : chr [1:23] &quot;Software Development&quot; &quot;Technology&quot; &quot;Cloud Computing&quot; &quot;Mobile Development&quot; ...
+##   .. .. ..$ id    : int [1:23] 3833 10579 15167 21441 48471 78565 659 9696 15582 16216 ...
+##   .. ..$ :&#39;data.frame&#39;:  14 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:14] &quot;salsa&quot; &quot;meditation&quot; &quot;self-improvement&quot; &quot;lawofattraction&quot; ...
+##   .. .. ..$ name  : chr [1:14] &quot;Salsa&quot; &quot;Meditation&quot; &quot;Self-Improvement&quot; &quot;Law of Attraction&quot; ...
+##   .. .. ..$ id    : int [1:14] 1122 1322 3336 3382 10290 15067 16212 18340 18874 19130 ...
+##   .. ..$ :&#39;data.frame&#39;:  30 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:30] &quot;esl&quot; &quot;opensource&quot; &quot;innovation&quot; &quot;gameprog&quot; ...
+##   .. .. ..$ name  : chr [1:30] &quot;English as a Second Language&quot; &quot;Open Source&quot; &quot;Innovation&quot; &quot;Game Programming&quot; ...
+##   .. .. ..$ id    : int [1:30] 182 563 1954 3287 3833 8652 9696 9753 9772 10538 ...
+##   .. ..$ :&#39;data.frame&#39;:  50 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:50] &quot;english-language&quot; &quot;ruby&quot; &quot;javascript&quot; &quot;web&quot; ...
+##   .. .. ..$ name  : chr [1:50] &quot;English Language&quot; &quot;Ruby&quot; &quot;JavaScript&quot; &quot;Web Technology&quot; ...
+##   .. .. ..$ id    : int [1:50] 25698 1040 7029 10209 15401 15582 21123 44584 78565 85951 ...
+##   .. ..$ :&#39;data.frame&#39;:  50 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:50] &quot;science&quot; &quot;environment&quot; &quot;latinmusic&quot; &quot;musicians&quot; ...
+##   .. .. ..$ name  : chr [1:50] &quot;Science&quot; &quot;Environment&quot; &quot;Latin Music&quot; &quot;Musicians&quot; ...
+##   .. .. ..$ id    : int [1:50] 85 89 130 173 182 211 242 485 563 579 ...
+##   .. ..$ :&#39;data.frame&#39;:  11 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:11] &quot;opensource&quot; &quot;webdesign&quot; &quot;python&quot; &quot;softwaredev&quot; ...
+##   .. .. ..$ name  : chr [1:11] &quot;Open Source&quot; &quot;Web Design&quot; &quot;Python&quot; &quot;Software Development&quot; ...
+##   .. .. ..$ id    : int [1:11] 563 659 1064 3833 9696 9886 15167 15582 48471 85951 ...
+##   .. ..$ :&#39;data.frame&#39;:  9 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:9] &quot;art&quot; &quot;education&quot; &quot;newtech&quot; &quot;sports&quot; ...
+##   .. .. ..$ name  : chr [1:9] &quot;Art&quot; &quot;Education&quot; &quot;New Technology&quot; &quot;Sports and Recreation&quot; ...
+##   .. .. ..$ id    : int [1:9] 1502 8476 9696 10451 15018 15046 15236 15321 15992
+##   .. ..$ :&#39;data.frame&#39;:  0 obs. of  0 variables
+##   .. ..$ :&#39;data.frame&#39;:  1 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr &quot;music&quot;
+##   .. .. ..$ name  : chr &quot;Music&quot;
+##   .. .. ..$ id    : int 15018
+##   .. ..$ :&#39;data.frame&#39;:  17 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:17] &quot;javascript&quot; &quot;web-development&quot; &quot;html5&quot; &quot;courses-and-workshops&quot; ...
+##   .. .. ..$ name  : chr [1:17] &quot;JavaScript&quot; &quot;Web Development&quot; &quot;HTML5&quot; &quot;Courses and Workshops&quot; ...
+##   .. .. ..$ id    : int [1:17] 7029 15582 78565 20629 189 3833 16137 16216 21441 48471 ...
+##   .. ..$ :&#39;data.frame&#39;:  15 obs. of  3 variables:
+##   .. .. ..$ urlkey: chr [1:15] &quot;opensource&quot; &quot;computer-programming&quot; &quot;digcam&quot; &quot;photo&quot; ...
+##   .. .. ..$ name  : chr [1:15] &quot;Open Source&quot; &quot;Computer programming&quot; &quot;Digital Photography&quot; &quot;Photography&quot; ...
+##   .. .. ..$ id    : int [1:15] 563 48471 206 223 456 10438 18062 29971 30928 37381 ...
+##   .. .. [list output truncated]
+##   ..$ joined        : num [1:200] 1.44e+12 1.46e+12 1.45e+12 1.44e+12 1.44e+12 ...
+##   ..$ link          : chr [1:200] &quot;http://www.meetup.com/members/42308302&quot; &quot;http://www.meetup.com/members/136595122&quot; &quot;http://www.meetup.com/members/19946191&quot; &quot;http://www.meetup.com/members/189889100&quot; ...
+##   ..$ photo         :&#39;data.frame&#39;:   200 obs. of  4 variables:
+##   .. ..$ highres_link: chr [1:200] &quot;http://photos4.meetupstatic.com/photos/member/8/b/7/6/highres_46895702.jpeg&quot; &quot;http://photos4.meetupstatic.com/photos/member/8/c/c/0/highres_192456032.jpeg&quot; NA &quot;http://photos2.meetupstatic.com/photos/member/2/e/1/f/highres_247871807.jpeg&quot; ...
+##   .. ..$ photo_id    : int [1:200] 46895702 192456032 18409881 247871807 247284068 242378406 247055192 254453319 NA NA ...
+##   .. ..$ photo_link  : chr [1:200] &quot;http://photos4.meetupstatic.com/photos/member/8/b/7/6/member_46895702.jpeg&quot; &quot;http://photos2.meetupstatic.com/photos/member/8/c/c/0/member_192456032.jpeg&quot; &quot;http://photos3.meetupstatic.com/photos/member/c/2/d/9/member_18409881.jpeg&quot; &quot;http://photos2.meetupstatic.com/photos/member/2/e/1/f/member_247871807.jpeg&quot; ...
+##   .. ..$ thumb_link  : chr [1:200] &quot;http://photos2.meetupstatic.com/photos/member/8/b/7/6/thumb_46895702.jpeg&quot; &quot;http://photos2.meetupstatic.com/photos/member/8/c/c/0/thumb_192456032.jpeg&quot; &quot;http://photos3.meetupstatic.com/photos/member/c/2/d/9/thumb_18409881.jpeg&quot; &quot;http://photos4.meetupstatic.com/photos/member/2/e/1/f/thumb_247871807.jpeg&quot; ...
+##   ..$ lon           : num [1:200] -74.1 -74.1 -122.4 -74.1 -74.1 ...
+##   ..$ other_services:&#39;data.frame&#39;:   200 obs. of  4 variables:
+##   .. ..$ twitter :&#39;data.frame&#39;:  200 obs. of  1 variable:
+##   .. .. ..$ identifier: chr [1:200] &quot;@jpmarindiaz&quot; NA NA NA ...
+##   .. ..$ tumblr  :&#39;data.frame&#39;:  200 obs. of  1 variable:
+##   .. .. ..$ identifier: chr [1:200] NA NA NA NA ...
+##   .. ..$ flickr  :&#39;data.frame&#39;:  200 obs. of  1 variable:
+##   .. .. ..$ identifier: chr [1:200] NA NA NA NA ...
+##   .. ..$ facebook:&#39;data.frame&#39;:  200 obs. of  1 variable:
+##   .. .. ..$ identifier: chr [1:200] NA NA NA NA ...
+##   ..$ name          : chr [1:200] &quot;@jpmarindiaz&quot; &quot;1ng3&quot; &quot;Abelardo Duarte Rey&quot; &quot;Adrian Zuur&quot; ...
+##   ..$ visited       : num [1:200] 1.47e+12 1.46e+12 1.45e+12 1.44e+12 1.46e+12 ...
+##   ..$ self          :&#39;data.frame&#39;:   200 obs. of  1 variable:
+##   .. ..$ common:&#39;data.frame&#39;:    200 obs. of  0 variables
+##   ..$ id            : int [1:200] 42308302 136595122 19946191 189889100 188997341 183105297 188617906 200884932 189087328 187270799 ...
+##   ..$ lang          : chr [1:200] &quot;en_US&quot; NA NA NA ...
+##   ..$ lat           : num [1:200] 4.63 4.63 37.77 4.63 4.63 ...
+##   ..$ status        : chr [1:200] &quot;active&quot; &quot;active&quot; &quot;active&quot; &quot;active&quot; ...
+##   ..$ hometown      : chr [1:200] NA NA &quot;Bogotá&quot; NA ...
+##   ..$ state         : chr [1:200] NA NA &quot;CA&quot; NA ...
+##   ..$ bio           : chr [1:200] NA NA NA NA ...
+##  $ meta   :List of 12
+##   ..$ next       : chr &quot;https://api.meetup.com/2/members?offset=1&amp;format=json&amp;group_urlname=Bogota-R-Users-Group&amp;page=200&amp;key=5e4ce10350244e7467446a624&quot;| __truncated__
+##   ..$ method     : chr &quot;Members&quot;
+##   ..$ total_count: int 676
+##   ..$ link       : chr &quot;https://api.meetup.com/2/members&quot;
+##   ..$ count      : int 200
+##   ..$ description: chr &quot;API method for accessing members of Meetup Groups&quot;
+##   ..$ lon        : chr &quot;&quot;
+##   ..$ title      : chr &quot;Meetup Members v2&quot;
+##   ..$ url        : chr &quot;https://api.meetup.com/2/members?offset=0&amp;format=json&amp;group_urlname=Bogota-R-Users-Group&amp;page=200&amp;key=5e4ce10350244e7467446a624&quot;| __truncated__
+##   ..$ id         : chr &quot;&quot;
+##   ..$ updated    : num 1.47e+12
+##   ..$ lat        : chr &quot;&quot;
+</code></pre>
+
+<h2>Más lecturas desde texto</h2>
+
+<h3>Vectores</h3>
+
+<pre><code class="r">fromJSON(&#39;[&quot;Mario&quot;, &quot;Peach&quot;, null, &quot;Bowser&quot;]&#39;)
+</code></pre>
+
+<pre><code>## [1] &quot;Mario&quot;  &quot;Peach&quot;  NA       &quot;Bowser&quot;
+</code></pre>
+
+<pre><code class="r">fromJSON(&#39;[&quot;Mario&quot;, &quot;Peach&quot;, null, &quot;Bowser&quot;]&#39;, simplifyVector = FALSE)
+</code></pre>
+
+<pre><code>## [[1]]
+## [1] &quot;Mario&quot;
+## 
+## [[2]]
+## [1] &quot;Peach&quot;
+## 
+## [[3]]
+## NULL
+## 
+## [[4]]
+## [1] &quot;Bowser&quot;
+</code></pre>
+
+<h3>Dataframes</h3>
+
+<pre><code class="r">json &lt;-
+  &#39;[
+{&quot;Name&quot; : &quot;Mario&quot;, &quot;Age&quot; : 32, &quot;Occupation&quot; : &quot;Plumber&quot;},
+{&quot;Name&quot; : &quot;Peach&quot;, &quot;Age&quot; : 21, &quot;Occupation&quot; : &quot;Princess&quot;},
+{},
+{&quot;Name&quot; : &quot;Bowser&quot;, &quot;Occupation&quot; : &quot;Koopa&quot;}
+]&#39;
+fromJSON(json)
+</code></pre>
+
+<pre><code>##     Name Age Occupation
+## 1  Mario  32    Plumber
+## 2  Peach  21   Princess
+## 3   &lt;NA&gt;  NA       &lt;NA&gt;
+## 4 Bowser  NA      Koopa
+</code></pre>
+
+<pre><code class="r">fromJSON(json, simplifyDataFrame = FALSE)
+</code></pre>
+
+<pre><code>## [[1]]
+## [[1]]$Name
+## [1] &quot;Mario&quot;
+## 
+## [[1]]$Age
+## [1] 32
+## 
+## [[1]]$Occupation
+## [1] &quot;Plumber&quot;
+## 
+## 
+## [[2]]
+## [[2]]$Name
+## [1] &quot;Peach&quot;
+## 
+## [[2]]$Age
+## [1] 21
+## 
+## [[2]]$Occupation
+## [1] &quot;Princess&quot;
+## 
+## 
+## [[3]]
+## named list()
+## 
+## [[4]]
+## [[4]]$Name
+## [1] &quot;Bowser&quot;
+## 
+## [[4]]$Occupation
+## [1] &quot;Koopa&quot;
+</code></pre>
+
+<h3>Matrices</h3>
+
+<pre><code class="r">json &lt;- &#39;[
+  [1, 2, 3, 4],
+[5, 6, 7, 8],
+[9, 10, 11, 12]
+]&#39;
+fromJSON(json)
+</code></pre>
+
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    2    3    4
+## [2,]    5    6    7    8
+## [3,]    9   10   11   12
+</code></pre>
+
+<pre><code class="r">fromJSON(json, simplifyMatrix = FALSE)
+</code></pre>
+
+<pre><code>## [[1]]
+## [1] 1 2 3 4
+## 
+## [[2]]
+## [1] 5 6 7 8
+## 
+## [[3]]
+## [1]  9 10 11 12
+</code></pre>
+
+<h3>Arreglos de cualquier dimensión</h3>
+
+<pre><code class="r">json &lt;- &#39;[
+   [[1, 2],
+[3, 4]],
+[[5, 6],
+[7, 8]],
+[[9, 10],
+[11, 12]]
+]&#39;
+myarray &lt;- fromJSON(json)
+myarray[1, , ]
+</code></pre>
+
+<pre><code>##      [,1] [,2]
+## [1,]    1    2
+## [2,]    3    4
+</code></pre>
+
+<h2>Tip: Usar unbox</h2>
+
+<pre><code class="r">fromJSON(&#39;[1,2,3]&#39;)
+</code></pre>
+
+<pre><code>## [1] 1 2 3
+</code></pre>
+
+<pre><code class="r">toJSON(c(1,2,3))
+</code></pre>
+
+<pre><code>## [1,2,3]
+</code></pre>
+
+<pre><code class="r">fromJSON(&#39;[&quot;a&quot;]&#39;)
+</code></pre>
+
+<pre><code>## [1] &quot;a&quot;
+</code></pre>
+
+<pre><code class="r">toJSON(&quot;a&quot;)
+</code></pre>
+
+<pre><code>## [&quot;a&quot;]
+</code></pre>
+
+<pre><code class="r">toJSON(unbox(&quot;a&quot;))
+</code></pre>
+
+<pre><code>## &quot;a&quot;
+</code></pre>
+
+<h2>Tip: Usar Pretty</h2>
+
+<pre><code class="r">toJSON(mtcars)
+</code></pre>
+
+<pre><code>## [{&quot;mpg&quot;:21,&quot;cyl&quot;:6,&quot;disp&quot;:160,&quot;hp&quot;:110,&quot;drat&quot;:3.9,&quot;wt&quot;:2.62,&quot;qsec&quot;:16.46,&quot;vs&quot;:0,&quot;am&quot;:1,&quot;gear&quot;:4,&quot;carb&quot;:4,&quot;_row&quot;:&quot;Mazda RX4&quot;},{&quot;mpg&quot;:21,&quot;cyl&quot;:6,&quot;disp&quot;:160,&quot;hp&quot;:110,&quot;drat&quot;:3.9,&quot;wt&quot;:2.875,&quot;qsec&quot;:17.02,&quot;vs&quot;:0,&quot;am&quot;:1,&quot;gear&quot;:4,&quot;carb&quot;:4,&quot;_row&quot;:&quot;Mazda RX4 Wag&quot;},{&quot;mpg&quot;:22.8,&quot;cyl&quot;:4,&quot;disp&quot;:108,&quot;hp&quot;:93,&quot;drat&quot;:3.85,&quot;wt&quot;:2.32,&quot;qsec&quot;:18.61,&quot;vs&quot;:1,&quot;am&quot;:1,&quot;gear&quot;:4,&quot;carb&quot;:1,&quot;_row&quot;:&quot;Datsun 710&quot;},{&quot;mpg&quot;:21.4,&quot;cyl&quot;:6,&quot;disp&quot;:258,&quot;hp&quot;:110,&quot;drat&quot;:3.08,&quot;wt&quot;:3.215,&quot;qsec&quot;:19.44,&quot;vs&quot;:1,&quot;am&quot;:0,&quot;gear&quot;:3,&quot;carb&quot;:1,&quot;_row&quot;:&quot;Hornet 4 Drive&quot;},{&quot;mpg&quot;:18.7,&quot;cyl&quot;:8,&quot;disp&quot;:360,&quot;hp&quot;:175,&quot;drat&quot;:3.15,&quot;wt&quot;:3.44,&quot;qsec&quot;:17.02,&quot;vs&quot;:0,&quot;am&quot;:0,&quot;gear&quot;:3,&quot;carb&quot;:2,&quot;_row&quot;:&quot;Hornet Sportabout&quot;},{&quot;mpg&quot;:18.1,&quot;cyl&quot;:6,&quot;disp&quot;:225,&quot;hp&quot;:105,&quot;drat&quot;:2.76,&quot;wt&quot;:3.46,&quot;qsec&quot;:20.22,&quot;vs&quot;:1,&quot;am&quot;:0,&quot;gear&quot;:3,&quot;carb&quot;:1,&quot;_row&quot;:&quot;Valiant&quot;},{&quot;mpg&quot;:14.3,&quot;cyl&quot;:8,&quot;disp&quot;:360,&quot;hp&quot;:245,&quot;drat&quot;:3.21,&quot;wt&quot;:3.57,&quot;qsec&quot;:15.84,&quot;vs&quot;:0,&quot;am&quot;:0,&quot;gear&quot;:3,&quot;carb&quot;:4,&quot;_row&quot;:&quot;Duster 360&quot;},{&quot;mpg&quot;:24.4,&quot;cyl&quot;:4,&quot;disp&quot;:146.7,&quot;hp&quot;:62,&quot;drat&quot;:3.69,&quot;wt&quot;:3.19,&quot;qsec&quot;:20,&quot;vs&quot;:1,&quot;am&quot;:0,&quot;gear&quot;:4,&quot;carb&quot;:2,&quot;_row&quot;:&quot;Merc 240D&quot;},{&quot;mpg&quot;:22.8,&quot;cyl&quot;:4,&quot;disp&quot;:140.8,&quot;hp&quot;:95,&quot;drat&quot;:3.92,&quot;wt&quot;:3.15,&quot;qsec&quot;:22.9,&quot;vs&quot;:1,&quot;am&quot;:0,&quot;gear&quot;:4,&quot;carb&quot;:2,&quot;_row&quot;:&quot;Merc 230&quot;},{&quot;mpg&quot;:19.2,&quot;cyl&quot;:6,&quot;disp&quot;:167.6,&quot;hp&quot;:123,&quot;drat&quot;:3.92,&quot;wt&quot;:3.44,&quot;qsec&quot;:18.3,&quot;vs&quot;:1,&quot;am&quot;:0,&quot;gear&quot;:4,&quot;carb&quot;:4,&quot;_row&quot;:&quot;Merc 280&quot;},{&quot;mpg&quot;:17.8,&quot;cyl&quot;:6,&quot;disp&quot;:167.6,&quot;hp&quot;:123,&quot;drat&quot;:3.92,&quot;wt&quot;:3.44,&quot;qsec&quot;:18.9,&quot;vs&quot;:1,&quot;am&quot;:0,&quot;gear&quot;:4,&quot;carb&quot;:4,&quot;_row&quot;:&quot;Merc 280C&quot;},{&quot;mpg&quot;:16.4,&quot;cyl&quot;:8,&quot;disp&quot;:275.8,&quot;hp&quot;:180,&quot;drat&quot;:3.07,&quot;wt&quot;:4.07,&quot;qsec&quot;:17.4,&quot;vs&quot;:0,&quot;am&quot;:0,&quot;gear&quot;:3,&quot;carb&quot;:3,&quot;_row&quot;:&quot;Merc 450SE&quot;},{&quot;mpg&quot;:17.3,&quot;cyl&quot;:8,&quot;disp&quot;:275.8,&quot;hp&quot;:180,&quot;drat&quot;:3.07,&quot;wt&quot;:3.73,&quot;qsec&quot;:17.6,&quot;vs&quot;:0,&quot;am&quot;:0,&quot;gear&quot;:3,&quot;carb&quot;:3,&quot;_row&quot;:&quot;Merc 450SL&quot;},{&quot;mpg&quot;:15.2,&quot;cyl&quot;:8,&quot;disp&quot;:275.8,&quot;hp&quot;:180,&quot;drat&quot;:3.07,&quot;wt&quot;:3.78,&quot;qsec&quot;:18,&quot;vs&quot;:0,&quot;am&quot;:0,&quot;gear&quot;:3,&quot;carb&quot;:3,&quot;_row&quot;:&quot;Merc 450SLC&quot;},{&quot;mpg&quot;:10.4,&quot;cyl&quot;:8,&quot;disp&quot;:472,&quot;hp&quot;:205,&quot;drat&quot;:2.93,&quot;wt&quot;:5.25,&quot;qsec&quot;:17.98,&quot;vs&quot;:0,&quot;am&quot;:0,&quot;gear&quot;:3,&quot;carb&quot;:4,&quot;_row&quot;:&quot;Cadillac Fleetwood&quot;},{&quot;mpg&quot;:10.4,&quot;cyl&quot;:8,&quot;disp&quot;:460,&quot;hp&quot;:215,&quot;drat&quot;:3,&quot;wt&quot;:5.424,&quot;qsec&quot;:17.82,&quot;vs&quot;:0,&quot;am&quot;:0,&quot;gear&quot;:3,&quot;carb&quot;:4,&quot;_row&quot;:&quot;Lincoln Continental&quot;},{&quot;mpg&quot;:14.7,&quot;cyl&quot;:8,&quot;disp&quot;:440,&quot;hp&quot;:230,&quot;drat&quot;:3.23,&quot;wt&quot;:5.345,&quot;qsec&quot;:17.42,&quot;vs&quot;:0,&quot;am&quot;:0,&quot;gear&quot;:3,&quot;carb&quot;:4,&quot;_row&quot;:&quot;Chrysler Imperial&quot;},{&quot;mpg&quot;:32.4,&quot;cyl&quot;:4,&quot;disp&quot;:78.7,&quot;hp&quot;:66,&quot;drat&quot;:4.08,&quot;wt&quot;:2.2,&quot;qsec&quot;:19.47,&quot;vs&quot;:1,&quot;am&quot;:1,&quot;gear&quot;:4,&quot;carb&quot;:1,&quot;_row&quot;:&quot;Fiat 128&quot;},{&quot;mpg&quot;:30.4,&quot;cyl&quot;:4,&quot;disp&quot;:75.7,&quot;hp&quot;:52,&quot;drat&quot;:4.93,&quot;wt&quot;:1.615,&quot;qsec&quot;:18.52,&quot;vs&quot;:1,&quot;am&quot;:1,&quot;gear&quot;:4,&quot;carb&quot;:2,&quot;_row&quot;:&quot;Honda Civic&quot;},{&quot;mpg&quot;:33.9,&quot;cyl&quot;:4,&quot;disp&quot;:71.1,&quot;hp&quot;:65,&quot;drat&quot;:4.22,&quot;wt&quot;:1.835,&quot;qsec&quot;:19.9,&quot;vs&quot;:1,&quot;am&quot;:1,&quot;gear&quot;:4,&quot;carb&quot;:1,&quot;_row&quot;:&quot;Toyota Corolla&quot;},{&quot;mpg&quot;:21.5,&quot;cyl&quot;:4,&quot;disp&quot;:120.1,&quot;hp&quot;:97,&quot;drat&quot;:3.7,&quot;wt&quot;:2.465,&quot;qsec&quot;:20.01,&quot;vs&quot;:1,&quot;am&quot;:0,&quot;gear&quot;:3,&quot;carb&quot;:1,&quot;_row&quot;:&quot;Toyota Corona&quot;},{&quot;mpg&quot;:15.5,&quot;cyl&quot;:8,&quot;disp&quot;:318,&quot;hp&quot;:150,&quot;drat&quot;:2.76,&quot;wt&quot;:3.52,&quot;qsec&quot;:16.87,&quot;vs&quot;:0,&quot;am&quot;:0,&quot;gear&quot;:3,&quot;carb&quot;:2,&quot;_row&quot;:&quot;Dodge Challenger&quot;},{&quot;mpg&quot;:15.2,&quot;cyl&quot;:8,&quot;disp&quot;:304,&quot;hp&quot;:150,&quot;drat&quot;:3.15,&quot;wt&quot;:3.435,&quot;qsec&quot;:17.3,&quot;vs&quot;:0,&quot;am&quot;:0,&quot;gear&quot;:3,&quot;carb&quot;:2,&quot;_row&quot;:&quot;AMC Javelin&quot;},{&quot;mpg&quot;:13.3,&quot;cyl&quot;:8,&quot;disp&quot;:350,&quot;hp&quot;:245,&quot;drat&quot;:3.73,&quot;wt&quot;:3.84,&quot;qsec&quot;:15.41,&quot;vs&quot;:0,&quot;am&quot;:0,&quot;gear&quot;:3,&quot;carb&quot;:4,&quot;_row&quot;:&quot;Camaro Z28&quot;},{&quot;mpg&quot;:19.2,&quot;cyl&quot;:8,&quot;disp&quot;:400,&quot;hp&quot;:175,&quot;drat&quot;:3.08,&quot;wt&quot;:3.845,&quot;qsec&quot;:17.05,&quot;vs&quot;:0,&quot;am&quot;:0,&quot;gear&quot;:3,&quot;carb&quot;:2,&quot;_row&quot;:&quot;Pontiac Firebird&quot;},{&quot;mpg&quot;:27.3,&quot;cyl&quot;:4,&quot;disp&quot;:79,&quot;hp&quot;:66,&quot;drat&quot;:4.08,&quot;wt&quot;:1.935,&quot;qsec&quot;:18.9,&quot;vs&quot;:1,&quot;am&quot;:1,&quot;gear&quot;:4,&quot;carb&quot;:1,&quot;_row&quot;:&quot;Fiat X1-9&quot;},{&quot;mpg&quot;:26,&quot;cyl&quot;:4,&quot;disp&quot;:120.3,&quot;hp&quot;:91,&quot;drat&quot;:4.43,&quot;wt&quot;:2.14,&quot;qsec&quot;:16.7,&quot;vs&quot;:0,&quot;am&quot;:1,&quot;gear&quot;:5,&quot;carb&quot;:2,&quot;_row&quot;:&quot;Porsche 914-2&quot;},{&quot;mpg&quot;:30.4,&quot;cyl&quot;:4,&quot;disp&quot;:95.1,&quot;hp&quot;:113,&quot;drat&quot;:3.77,&quot;wt&quot;:1.513,&quot;qsec&quot;:16.9,&quot;vs&quot;:1,&quot;am&quot;:1,&quot;gear&quot;:5,&quot;carb&quot;:2,&quot;_row&quot;:&quot;Lotus Europa&quot;},{&quot;mpg&quot;:15.8,&quot;cyl&quot;:8,&quot;disp&quot;:351,&quot;hp&quot;:264,&quot;drat&quot;:4.22,&quot;wt&quot;:3.17,&quot;qsec&quot;:14.5,&quot;vs&quot;:0,&quot;am&quot;:1,&quot;gear&quot;:5,&quot;carb&quot;:4,&quot;_row&quot;:&quot;Ford Pantera L&quot;},{&quot;mpg&quot;:19.7,&quot;cyl&quot;:6,&quot;disp&quot;:145,&quot;hp&quot;:175,&quot;drat&quot;:3.62,&quot;wt&quot;:2.77,&quot;qsec&quot;:15.5,&quot;vs&quot;:0,&quot;am&quot;:1,&quot;gear&quot;:5,&quot;carb&quot;:6,&quot;_row&quot;:&quot;Ferrari Dino&quot;},{&quot;mpg&quot;:15,&quot;cyl&quot;:8,&quot;disp&quot;:301,&quot;hp&quot;:335,&quot;drat&quot;:3.54,&quot;wt&quot;:3.57,&quot;qsec&quot;:14.6,&quot;vs&quot;:0,&quot;am&quot;:1,&quot;gear&quot;:5,&quot;carb&quot;:8,&quot;_row&quot;:&quot;Maserati Bora&quot;},{&quot;mpg&quot;:21.4,&quot;cyl&quot;:4,&quot;disp&quot;:121,&quot;hp&quot;:109,&quot;drat&quot;:4.11,&quot;wt&quot;:2.78,&quot;qsec&quot;:18.6,&quot;vs&quot;:1,&quot;am&quot;:1,&quot;gear&quot;:4,&quot;carb&quot;:2,&quot;_row&quot;:&quot;Volvo 142E&quot;}]
+</code></pre>
+
+<pre><code class="r">toJSON(mtcars, pretty = TRUE)
+</code></pre>
+
+<pre><code>## [
+##   {
+##     &quot;mpg&quot;: 21,
+##     &quot;cyl&quot;: 6,
+##     &quot;disp&quot;: 160,
+##     &quot;hp&quot;: 110,
+##     &quot;drat&quot;: 3.9,
+##     &quot;wt&quot;: 2.62,
+##     &quot;qsec&quot;: 16.46,
+##     &quot;vs&quot;: 0,
+##     &quot;am&quot;: 1,
+##     &quot;gear&quot;: 4,
+##     &quot;carb&quot;: 4,
+##     &quot;_row&quot;: &quot;Mazda RX4&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 21,
+##     &quot;cyl&quot;: 6,
+##     &quot;disp&quot;: 160,
+##     &quot;hp&quot;: 110,
+##     &quot;drat&quot;: 3.9,
+##     &quot;wt&quot;: 2.875,
+##     &quot;qsec&quot;: 17.02,
+##     &quot;vs&quot;: 0,
+##     &quot;am&quot;: 1,
+##     &quot;gear&quot;: 4,
+##     &quot;carb&quot;: 4,
+##     &quot;_row&quot;: &quot;Mazda RX4 Wag&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 22.8,
+##     &quot;cyl&quot;: 4,
+##     &quot;disp&quot;: 108,
+##     &quot;hp&quot;: 93,
+##     &quot;drat&quot;: 3.85,
+##     &quot;wt&quot;: 2.32,
+##     &quot;qsec&quot;: 18.61,
+##     &quot;vs&quot;: 1,
+##     &quot;am&quot;: 1,
+##     &quot;gear&quot;: 4,
+##     &quot;carb&quot;: 1,
+##     &quot;_row&quot;: &quot;Datsun 710&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 21.4,
+##     &quot;cyl&quot;: 6,
+##     &quot;disp&quot;: 258,
+##     &quot;hp&quot;: 110,
+##     &quot;drat&quot;: 3.08,
+##     &quot;wt&quot;: 3.215,
+##     &quot;qsec&quot;: 19.44,
+##     &quot;vs&quot;: 1,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 3,
+##     &quot;carb&quot;: 1,
+##     &quot;_row&quot;: &quot;Hornet 4 Drive&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 18.7,
+##     &quot;cyl&quot;: 8,
+##     &quot;disp&quot;: 360,
+##     &quot;hp&quot;: 175,
+##     &quot;drat&quot;: 3.15,
+##     &quot;wt&quot;: 3.44,
+##     &quot;qsec&quot;: 17.02,
+##     &quot;vs&quot;: 0,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 3,
+##     &quot;carb&quot;: 2,
+##     &quot;_row&quot;: &quot;Hornet Sportabout&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 18.1,
+##     &quot;cyl&quot;: 6,
+##     &quot;disp&quot;: 225,
+##     &quot;hp&quot;: 105,
+##     &quot;drat&quot;: 2.76,
+##     &quot;wt&quot;: 3.46,
+##     &quot;qsec&quot;: 20.22,
+##     &quot;vs&quot;: 1,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 3,
+##     &quot;carb&quot;: 1,
+##     &quot;_row&quot;: &quot;Valiant&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 14.3,
+##     &quot;cyl&quot;: 8,
+##     &quot;disp&quot;: 360,
+##     &quot;hp&quot;: 245,
+##     &quot;drat&quot;: 3.21,
+##     &quot;wt&quot;: 3.57,
+##     &quot;qsec&quot;: 15.84,
+##     &quot;vs&quot;: 0,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 3,
+##     &quot;carb&quot;: 4,
+##     &quot;_row&quot;: &quot;Duster 360&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 24.4,
+##     &quot;cyl&quot;: 4,
+##     &quot;disp&quot;: 146.7,
+##     &quot;hp&quot;: 62,
+##     &quot;drat&quot;: 3.69,
+##     &quot;wt&quot;: 3.19,
+##     &quot;qsec&quot;: 20,
+##     &quot;vs&quot;: 1,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 4,
+##     &quot;carb&quot;: 2,
+##     &quot;_row&quot;: &quot;Merc 240D&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 22.8,
+##     &quot;cyl&quot;: 4,
+##     &quot;disp&quot;: 140.8,
+##     &quot;hp&quot;: 95,
+##     &quot;drat&quot;: 3.92,
+##     &quot;wt&quot;: 3.15,
+##     &quot;qsec&quot;: 22.9,
+##     &quot;vs&quot;: 1,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 4,
+##     &quot;carb&quot;: 2,
+##     &quot;_row&quot;: &quot;Merc 230&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 19.2,
+##     &quot;cyl&quot;: 6,
+##     &quot;disp&quot;: 167.6,
+##     &quot;hp&quot;: 123,
+##     &quot;drat&quot;: 3.92,
+##     &quot;wt&quot;: 3.44,
+##     &quot;qsec&quot;: 18.3,
+##     &quot;vs&quot;: 1,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 4,
+##     &quot;carb&quot;: 4,
+##     &quot;_row&quot;: &quot;Merc 280&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 17.8,
+##     &quot;cyl&quot;: 6,
+##     &quot;disp&quot;: 167.6,
+##     &quot;hp&quot;: 123,
+##     &quot;drat&quot;: 3.92,
+##     &quot;wt&quot;: 3.44,
+##     &quot;qsec&quot;: 18.9,
+##     &quot;vs&quot;: 1,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 4,
+##     &quot;carb&quot;: 4,
+##     &quot;_row&quot;: &quot;Merc 280C&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 16.4,
+##     &quot;cyl&quot;: 8,
+##     &quot;disp&quot;: 275.8,
+##     &quot;hp&quot;: 180,
+##     &quot;drat&quot;: 3.07,
+##     &quot;wt&quot;: 4.07,
+##     &quot;qsec&quot;: 17.4,
+##     &quot;vs&quot;: 0,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 3,
+##     &quot;carb&quot;: 3,
+##     &quot;_row&quot;: &quot;Merc 450SE&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 17.3,
+##     &quot;cyl&quot;: 8,
+##     &quot;disp&quot;: 275.8,
+##     &quot;hp&quot;: 180,
+##     &quot;drat&quot;: 3.07,
+##     &quot;wt&quot;: 3.73,
+##     &quot;qsec&quot;: 17.6,
+##     &quot;vs&quot;: 0,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 3,
+##     &quot;carb&quot;: 3,
+##     &quot;_row&quot;: &quot;Merc 450SL&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 15.2,
+##     &quot;cyl&quot;: 8,
+##     &quot;disp&quot;: 275.8,
+##     &quot;hp&quot;: 180,
+##     &quot;drat&quot;: 3.07,
+##     &quot;wt&quot;: 3.78,
+##     &quot;qsec&quot;: 18,
+##     &quot;vs&quot;: 0,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 3,
+##     &quot;carb&quot;: 3,
+##     &quot;_row&quot;: &quot;Merc 450SLC&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 10.4,
+##     &quot;cyl&quot;: 8,
+##     &quot;disp&quot;: 472,
+##     &quot;hp&quot;: 205,
+##     &quot;drat&quot;: 2.93,
+##     &quot;wt&quot;: 5.25,
+##     &quot;qsec&quot;: 17.98,
+##     &quot;vs&quot;: 0,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 3,
+##     &quot;carb&quot;: 4,
+##     &quot;_row&quot;: &quot;Cadillac Fleetwood&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 10.4,
+##     &quot;cyl&quot;: 8,
+##     &quot;disp&quot;: 460,
+##     &quot;hp&quot;: 215,
+##     &quot;drat&quot;: 3,
+##     &quot;wt&quot;: 5.424,
+##     &quot;qsec&quot;: 17.82,
+##     &quot;vs&quot;: 0,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 3,
+##     &quot;carb&quot;: 4,
+##     &quot;_row&quot;: &quot;Lincoln Continental&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 14.7,
+##     &quot;cyl&quot;: 8,
+##     &quot;disp&quot;: 440,
+##     &quot;hp&quot;: 230,
+##     &quot;drat&quot;: 3.23,
+##     &quot;wt&quot;: 5.345,
+##     &quot;qsec&quot;: 17.42,
+##     &quot;vs&quot;: 0,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 3,
+##     &quot;carb&quot;: 4,
+##     &quot;_row&quot;: &quot;Chrysler Imperial&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 32.4,
+##     &quot;cyl&quot;: 4,
+##     &quot;disp&quot;: 78.7,
+##     &quot;hp&quot;: 66,
+##     &quot;drat&quot;: 4.08,
+##     &quot;wt&quot;: 2.2,
+##     &quot;qsec&quot;: 19.47,
+##     &quot;vs&quot;: 1,
+##     &quot;am&quot;: 1,
+##     &quot;gear&quot;: 4,
+##     &quot;carb&quot;: 1,
+##     &quot;_row&quot;: &quot;Fiat 128&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 30.4,
+##     &quot;cyl&quot;: 4,
+##     &quot;disp&quot;: 75.7,
+##     &quot;hp&quot;: 52,
+##     &quot;drat&quot;: 4.93,
+##     &quot;wt&quot;: 1.615,
+##     &quot;qsec&quot;: 18.52,
+##     &quot;vs&quot;: 1,
+##     &quot;am&quot;: 1,
+##     &quot;gear&quot;: 4,
+##     &quot;carb&quot;: 2,
+##     &quot;_row&quot;: &quot;Honda Civic&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 33.9,
+##     &quot;cyl&quot;: 4,
+##     &quot;disp&quot;: 71.1,
+##     &quot;hp&quot;: 65,
+##     &quot;drat&quot;: 4.22,
+##     &quot;wt&quot;: 1.835,
+##     &quot;qsec&quot;: 19.9,
+##     &quot;vs&quot;: 1,
+##     &quot;am&quot;: 1,
+##     &quot;gear&quot;: 4,
+##     &quot;carb&quot;: 1,
+##     &quot;_row&quot;: &quot;Toyota Corolla&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 21.5,
+##     &quot;cyl&quot;: 4,
+##     &quot;disp&quot;: 120.1,
+##     &quot;hp&quot;: 97,
+##     &quot;drat&quot;: 3.7,
+##     &quot;wt&quot;: 2.465,
+##     &quot;qsec&quot;: 20.01,
+##     &quot;vs&quot;: 1,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 3,
+##     &quot;carb&quot;: 1,
+##     &quot;_row&quot;: &quot;Toyota Corona&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 15.5,
+##     &quot;cyl&quot;: 8,
+##     &quot;disp&quot;: 318,
+##     &quot;hp&quot;: 150,
+##     &quot;drat&quot;: 2.76,
+##     &quot;wt&quot;: 3.52,
+##     &quot;qsec&quot;: 16.87,
+##     &quot;vs&quot;: 0,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 3,
+##     &quot;carb&quot;: 2,
+##     &quot;_row&quot;: &quot;Dodge Challenger&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 15.2,
+##     &quot;cyl&quot;: 8,
+##     &quot;disp&quot;: 304,
+##     &quot;hp&quot;: 150,
+##     &quot;drat&quot;: 3.15,
+##     &quot;wt&quot;: 3.435,
+##     &quot;qsec&quot;: 17.3,
+##     &quot;vs&quot;: 0,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 3,
+##     &quot;carb&quot;: 2,
+##     &quot;_row&quot;: &quot;AMC Javelin&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 13.3,
+##     &quot;cyl&quot;: 8,
+##     &quot;disp&quot;: 350,
+##     &quot;hp&quot;: 245,
+##     &quot;drat&quot;: 3.73,
+##     &quot;wt&quot;: 3.84,
+##     &quot;qsec&quot;: 15.41,
+##     &quot;vs&quot;: 0,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 3,
+##     &quot;carb&quot;: 4,
+##     &quot;_row&quot;: &quot;Camaro Z28&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 19.2,
+##     &quot;cyl&quot;: 8,
+##     &quot;disp&quot;: 400,
+##     &quot;hp&quot;: 175,
+##     &quot;drat&quot;: 3.08,
+##     &quot;wt&quot;: 3.845,
+##     &quot;qsec&quot;: 17.05,
+##     &quot;vs&quot;: 0,
+##     &quot;am&quot;: 0,
+##     &quot;gear&quot;: 3,
+##     &quot;carb&quot;: 2,
+##     &quot;_row&quot;: &quot;Pontiac Firebird&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 27.3,
+##     &quot;cyl&quot;: 4,
+##     &quot;disp&quot;: 79,
+##     &quot;hp&quot;: 66,
+##     &quot;drat&quot;: 4.08,
+##     &quot;wt&quot;: 1.935,
+##     &quot;qsec&quot;: 18.9,
+##     &quot;vs&quot;: 1,
+##     &quot;am&quot;: 1,
+##     &quot;gear&quot;: 4,
+##     &quot;carb&quot;: 1,
+##     &quot;_row&quot;: &quot;Fiat X1-9&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 26,
+##     &quot;cyl&quot;: 4,
+##     &quot;disp&quot;: 120.3,
+##     &quot;hp&quot;: 91,
+##     &quot;drat&quot;: 4.43,
+##     &quot;wt&quot;: 2.14,
+##     &quot;qsec&quot;: 16.7,
+##     &quot;vs&quot;: 0,
+##     &quot;am&quot;: 1,
+##     &quot;gear&quot;: 5,
+##     &quot;carb&quot;: 2,
+##     &quot;_row&quot;: &quot;Porsche 914-2&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 30.4,
+##     &quot;cyl&quot;: 4,
+##     &quot;disp&quot;: 95.1,
+##     &quot;hp&quot;: 113,
+##     &quot;drat&quot;: 3.77,
+##     &quot;wt&quot;: 1.513,
+##     &quot;qsec&quot;: 16.9,
+##     &quot;vs&quot;: 1,
+##     &quot;am&quot;: 1,
+##     &quot;gear&quot;: 5,
+##     &quot;carb&quot;: 2,
+##     &quot;_row&quot;: &quot;Lotus Europa&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 15.8,
+##     &quot;cyl&quot;: 8,
+##     &quot;disp&quot;: 351,
+##     &quot;hp&quot;: 264,
+##     &quot;drat&quot;: 4.22,
+##     &quot;wt&quot;: 3.17,
+##     &quot;qsec&quot;: 14.5,
+##     &quot;vs&quot;: 0,
+##     &quot;am&quot;: 1,
+##     &quot;gear&quot;: 5,
+##     &quot;carb&quot;: 4,
+##     &quot;_row&quot;: &quot;Ford Pantera L&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 19.7,
+##     &quot;cyl&quot;: 6,
+##     &quot;disp&quot;: 145,
+##     &quot;hp&quot;: 175,
+##     &quot;drat&quot;: 3.62,
+##     &quot;wt&quot;: 2.77,
+##     &quot;qsec&quot;: 15.5,
+##     &quot;vs&quot;: 0,
+##     &quot;am&quot;: 1,
+##     &quot;gear&quot;: 5,
+##     &quot;carb&quot;: 6,
+##     &quot;_row&quot;: &quot;Ferrari Dino&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 15,
+##     &quot;cyl&quot;: 8,
+##     &quot;disp&quot;: 301,
+##     &quot;hp&quot;: 335,
+##     &quot;drat&quot;: 3.54,
+##     &quot;wt&quot;: 3.57,
+##     &quot;qsec&quot;: 14.6,
+##     &quot;vs&quot;: 0,
+##     &quot;am&quot;: 1,
+##     &quot;gear&quot;: 5,
+##     &quot;carb&quot;: 8,
+##     &quot;_row&quot;: &quot;Maserati Bora&quot;
+##   },
+##   {
+##     &quot;mpg&quot;: 21.4,
+##     &quot;cyl&quot;: 4,
+##     &quot;disp&quot;: 121,
+##     &quot;hp&quot;: 109,
+##     &quot;drat&quot;: 4.11,
+##     &quot;wt&quot;: 2.78,
+##     &quot;qsec&quot;: 18.6,
+##     &quot;vs&quot;: 1,
+##     &quot;am&quot;: 1,
+##     &quot;gear&quot;: 4,
+##     &quot;carb&quot;: 2,
+##     &quot;_row&quot;: &quot;Volvo 142E&quot;
+##   }
+## ]
+</code></pre>
+
+<h2>Serialization</h2>
+
+<pre><code class="r">No solo para tipos de datos estándar, en general para cualquier objeto.
+
+myobject &lt;- list(
+  mynull = NULL,
+  mycomplex = lapply(eigen(matrix(-rnorm(9),3)), round, 3),
+  mymatrix = round(matrix(rnorm(9), 3),3),
+  myint = as.integer(c(1,2,3)),
+  mydf = cars,
+  mylist = list(foo=&#39;bar&#39;, 123, NA, NULL, list(&#39;test&#39;)),
+  mylogical = c(TRUE,FALSE,NA),
+  mychar = c(&#39;foo&#39;, NA, &#39;bar&#39;),
+  somemissings = c(1,2,NA,NaN,5, Inf, 7 -Inf, 9, NA),
+  myrawvec = charToRaw(&#39;This is a test&#39;)
+)
+
+print(serializeJSON(myobject))
+</code></pre>
+
+<pre><code>## Error: &lt;text&gt;:1:4: unexpected symbol
+## 1: No solo
+##        ^
+</code></pre>
+
+<p>Ejemplo con una regresión lineal</p>
+
+<pre><code class="r">fit &lt;- lm(mpg ~ ., data=mtcars)
+summary(fit)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = mpg ~ ., data = mtcars)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.4506 -1.6044 -0.1196  1.2193  4.6271 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept) 12.30337   18.71788   0.657   0.5181  
+## cyl         -0.11144    1.04502  -0.107   0.9161  
+## disp         0.01334    0.01786   0.747   0.4635  
+## hp          -0.02148    0.02177  -0.987   0.3350  
+## drat         0.78711    1.63537   0.481   0.6353  
+## wt          -3.71530    1.89441  -1.961   0.0633 .
+## qsec         0.82104    0.73084   1.123   0.2739  
+## vs           0.31776    2.10451   0.151   0.8814  
+## am           2.52023    2.05665   1.225   0.2340  
+## gear         0.65541    1.49326   0.439   0.6652  
+## carb        -0.19942    0.82875  -0.241   0.8122  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.65 on 21 degrees of freedom
+## Multiple R-squared:  0.869,  Adjusted R-squared:  0.8066 
+## F-statistic: 13.93 on 10 and 21 DF,  p-value: 3.793e-07
+</code></pre>
+
+<pre><code class="r">cat(serializeJSON(fit,pretty = TRUE))
+</code></pre>
+
+<pre><code>## {
+##   &quot;type&quot;: &quot;list&quot;,
+##   &quot;attributes&quot;: {
+##     &quot;names&quot;: {
+##       &quot;type&quot;: &quot;character&quot;,
+##       &quot;attributes&quot;: {},
+##       &quot;value&quot;: [&quot;coefficients&quot;, &quot;residuals&quot;, &quot;effects&quot;, &quot;rank&quot;, &quot;fitted.values&quot;, &quot;assign&quot;, &quot;qr&quot;, &quot;df.residual&quot;, &quot;xlevels&quot;, &quot;call&quot;, &quot;terms&quot;, &quot;model&quot;]
+##     },
+##     &quot;class&quot;: {
+##       &quot;type&quot;: &quot;character&quot;,
+##       &quot;attributes&quot;: {},
+##       &quot;value&quot;: [&quot;lm&quot;]
+##     }
+##   },
+##   &quot;value&quot;: [
+##     {
+##       &quot;type&quot;: &quot;double&quot;,
+##       &quot;attributes&quot;: {
+##         &quot;names&quot;: {
+##           &quot;type&quot;: &quot;character&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [&quot;(Intercept)&quot;, &quot;cyl&quot;, &quot;disp&quot;, &quot;hp&quot;, &quot;drat&quot;, &quot;wt&quot;, &quot;qsec&quot;, &quot;vs&quot;, &quot;am&quot;, &quot;gear&quot;, &quot;carb&quot;]
+##         }
+##       },
+##       &quot;value&quot;: [12.30337416, -0.11144048, 0.01333524, -0.02148212, 0.78711097, -3.71530393, 0.82104075, 0.31776281, 2.52022689, 0.65541302, -0.19941925]
+##     },
+##     {
+##       &quot;type&quot;: &quot;double&quot;,
+##       &quot;attributes&quot;: {
+##         &quot;names&quot;: {
+##           &quot;type&quot;: &quot;character&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [&quot;Mazda RX4&quot;, &quot;Mazda RX4 Wag&quot;, &quot;Datsun 710&quot;, &quot;Hornet 4 Drive&quot;, &quot;Hornet Sportabout&quot;, &quot;Valiant&quot;, &quot;Duster 360&quot;, &quot;Merc 240D&quot;, &quot;Merc 230&quot;, &quot;Merc 280&quot;, &quot;Merc 280C&quot;, &quot;Merc 450SE&quot;, &quot;Merc 450SL&quot;, &quot;Merc 450SLC&quot;, &quot;Cadillac Fleetwood&quot;, &quot;Lincoln Continental&quot;, &quot;Chrysler Imperial&quot;, &quot;Fiat 128&quot;, &quot;Honda Civic&quot;, &quot;Toyota Corolla&quot;, &quot;Toyota Corona&quot;, &quot;Dodge Challenger&quot;, &quot;AMC Javelin&quot;, &quot;Camaro Z28&quot;, &quot;Pontiac Firebird&quot;, &quot;Fiat X1-9&quot;, &quot;Porsche 914-2&quot;, &quot;Lotus Europa&quot;, &quot;Ford Pantera L&quot;, &quot;Ferrari Dino&quot;, &quot;Maserati Bora&quot;, &quot;Volvo 142E&quot;]
+##         }
+##       },
+##       &quot;value&quot;: [-1.59950576, -1.11188608, -3.45064408, 0.16259545, 1.00656597, -2.28303904, -0.08625625, 1.90398812, -1.6190899, 0.50097006, -1.39165439, 2.22783789, 1.7004264, -0.5422247, -1.63401342, -0.53643771, 4.20637064, 4.62709419, 0.50326109, 4.3876309, -2.14310344, -1.44305322, -2.5321815, -0.00602198, 2.50832101, -0.99346869, -0.15295396, 2.76372742, -3.0700408, 0.00617185, 1.05888162, -2.96826768]
+##     },
+##     {
+##       &quot;type&quot;: &quot;double&quot;,
+##       &quot;attributes&quot;: {
+##         &quot;names&quot;: {
+##           &quot;type&quot;: &quot;character&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [&quot;(Intercept)&quot;, &quot;cyl&quot;, &quot;disp&quot;, &quot;hp&quot;, &quot;drat&quot;, &quot;wt&quot;, &quot;qsec&quot;, &quot;vs&quot;, &quot;am&quot;, &quot;gear&quot;, &quot;carb&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;]
+##         }
+##       },
+##       &quot;value&quot;: [-113.64973741, -28.59568066, 6.13139078, -3.06119736, -4.05800874, -8.80203356, -1.98728663, 0.36023424, 3.80450222, -0.98575377, -0.63770585, 2.679169, 2.07295049, -0.00631892, -1.25456252, 0.02453586, 4.73074979, 5.6543909, -0.96298589, 5.28547574, -1.33394996, -0.9287503, -2.20464611, -0.77234424, 3.22813661, -0.28493638, 2.54927189, 4.11672086, -1.85436522, 0.0485934, 0.93566759, -2.20575321]
+##     },
+##     {
+##       &quot;type&quot;: &quot;integer&quot;,
+##       &quot;attributes&quot;: {},
+##       &quot;value&quot;: [11]
+##     },
+##     {
+##       &quot;type&quot;: &quot;double&quot;,
+##       &quot;attributes&quot;: {
+##         &quot;names&quot;: {
+##           &quot;type&quot;: &quot;character&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [&quot;Mazda RX4&quot;, &quot;Mazda RX4 Wag&quot;, &quot;Datsun 710&quot;, &quot;Hornet 4 Drive&quot;, &quot;Hornet Sportabout&quot;, &quot;Valiant&quot;, &quot;Duster 360&quot;, &quot;Merc 240D&quot;, &quot;Merc 230&quot;, &quot;Merc 280&quot;, &quot;Merc 280C&quot;, &quot;Merc 450SE&quot;, &quot;Merc 450SL&quot;, &quot;Merc 450SLC&quot;, &quot;Cadillac Fleetwood&quot;, &quot;Lincoln Continental&quot;, &quot;Chrysler Imperial&quot;, &quot;Fiat 128&quot;, &quot;Honda Civic&quot;, &quot;Toyota Corolla&quot;, &quot;Toyota Corona&quot;, &quot;Dodge Challenger&quot;, &quot;AMC Javelin&quot;, &quot;Camaro Z28&quot;, &quot;Pontiac Firebird&quot;, &quot;Fiat X1-9&quot;, &quot;Porsche 914-2&quot;, &quot;Lotus Europa&quot;, &quot;Ford Pantera L&quot;, &quot;Ferrari Dino&quot;, &quot;Maserati Bora&quot;, &quot;Volvo 142E&quot;]
+##         }
+##       },
+##       &quot;value&quot;: [22.59950576, 22.11188608, 26.25064408, 21.23740455, 17.69343403, 20.38303904, 14.38625625, 22.49601188, 24.4190899, 18.69902994, 19.19165439, 14.17216211, 15.5995736, 15.7422247, 12.03401342, 10.93643771, 10.49362936, 27.77290581, 29.89673891, 29.5123691, 23.64310344, 16.94305322, 17.7321815, 13.30602198, 16.69167899, 28.29346869, 26.15295396, 27.63627258, 18.8700408, 19.69382815, 13.94111838, 24.36826768]
+##     },
+##     {
+##       &quot;type&quot;: &quot;integer&quot;,
+##       &quot;attributes&quot;: {},
+##       &quot;value&quot;: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+##     },
+##     {
+##       &quot;type&quot;: &quot;list&quot;,
+##       &quot;attributes&quot;: {
+##         &quot;names&quot;: {
+##           &quot;type&quot;: &quot;character&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [&quot;qr&quot;, &quot;qraux&quot;, &quot;pivot&quot;, &quot;tol&quot;, &quot;rank&quot;]
+##         },
+##         &quot;class&quot;: {
+##           &quot;type&quot;: &quot;character&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [&quot;qr&quot;]
+##         }
+##       },
+##       &quot;value&quot;: [
+##         {
+##           &quot;type&quot;: &quot;double&quot;,
+##           &quot;attributes&quot;: {
+##             &quot;dim&quot;: {
+##               &quot;type&quot;: &quot;integer&quot;,
+##               &quot;attributes&quot;: {},
+##               &quot;value&quot;: [32, 11]
+##             },
+##             &quot;dimnames&quot;: {
+##               &quot;type&quot;: &quot;list&quot;,
+##               &quot;attributes&quot;: {},
+##               &quot;value&quot;: [
+##                 {
+##                   &quot;type&quot;: &quot;character&quot;,
+##                   &quot;attributes&quot;: {},
+##                   &quot;value&quot;: [&quot;Mazda RX4&quot;, &quot;Mazda RX4 Wag&quot;, &quot;Datsun 710&quot;, &quot;Hornet 4 Drive&quot;, &quot;Hornet Sportabout&quot;, &quot;Valiant&quot;, &quot;Duster 360&quot;, &quot;Merc 240D&quot;, &quot;Merc 230&quot;, &quot;Merc 280&quot;, &quot;Merc 280C&quot;, &quot;Merc 450SE&quot;, &quot;Merc 450SL&quot;, &quot;Merc 450SLC&quot;, &quot;Cadillac Fleetwood&quot;, &quot;Lincoln Continental&quot;, &quot;Chrysler Imperial&quot;, &quot;Fiat 128&quot;, &quot;Honda Civic&quot;, &quot;Toyota Corolla&quot;, &quot;Toyota Corona&quot;, &quot;Dodge Challenger&quot;, &quot;AMC Javelin&quot;, &quot;Camaro Z28&quot;, &quot;Pontiac Firebird&quot;, &quot;Fiat X1-9&quot;, &quot;Porsche 914-2&quot;, &quot;Lotus Europa&quot;, &quot;Ford Pantera L&quot;, &quot;Ferrari Dino&quot;, &quot;Maserati Bora&quot;, &quot;Volvo 142E&quot;]
+##                 },
+##                 {
+##                   &quot;type&quot;: &quot;character&quot;,
+##                   &quot;attributes&quot;: {},
+##                   &quot;value&quot;: [&quot;(Intercept)&quot;, &quot;cyl&quot;, &quot;disp&quot;, &quot;hp&quot;, &quot;drat&quot;, &quot;wt&quot;, &quot;qsec&quot;, &quot;vs&quot;, &quot;am&quot;, &quot;gear&quot;, &quot;carb&quot;]
+##                 }
+##               ]
+##             },
+##             &quot;assign&quot;: {
+##               &quot;type&quot;: &quot;integer&quot;,
+##               &quot;attributes&quot;: {},
+##               &quot;value&quot;: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+##             }
+##           },
+##           &quot;value&quot;: [-5.65685425, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, 0.1767767, -35.00178567, 9.9435909, 0.21715832, 0.01602374, -0.18511084, 0.01602374, -0.18511084, 0.21715832, 0.21715832, 0.01602374, 0.01602374, -0.18511084, -0.18511084, -0.18511084, -0.18511084, -0.18511084, -0.18511084, 0.21715832, 0.21715832, 0.21715832, 0.21715832, -0.18511084, -0.18511084, -0.18511084, -0.18511084, 0.21715832, 0.21715832, 0.21715832, -0.18511084, 0.01602374, -0.18511084, 0.21715832, -1305.16001904, 622.45810511, -297.87699151, 0.16337837, 0.05218988, 0.05259438, 0.05218988, 0.24334591, 0.22353908, -0.14010261, -0.14010261, -0.23047714, -0.23047714, -0.23047714, 0.42818401, 0.38789892, 0.32075711, 0.01506376, 0.00499249, -0.01045012, 0.15404731, -0.08880792, -0.13580718, 0.01861898, 0.1864735, 0.01607089, 0.15471873, 0.07012005, 0.02197607, -0.21597285, -0.14587846, 0.15706869, -829.78980772, 317.78006875, -35.42112892, 208.53787794, 0.15657216, 0.16109028, -0.17909828, 0.08682158, -0.07669726, 0.02346322, 0.02346322, 0.05732646, 0.05732646, 0.05732646, 0.112834, 0.05415388, -0.03565418, 0.00685291, 0.07130519, 0.0048543, -0.10479228, 0.23890923, 0.22639415, -0.18803762, 0.19232952, 0.00712109, -0.07584174, -0.2038653, -0.27825423, -0.24609487, -0.66341665, -0.16153124, -20.34522986, -2.08369142, 0.54376131, 0.82206584, -1.8839011, -0.37171623, -0.08793686, -0.09193016, -0.07434489, 0.08588521, 0.08588521, -0.13528319, -0.13528319, -0.13528319, 0.08582482, 0.07225159, 0.11451002, -0.02318037, 0.46207265, 0.03977957, -0.23543047, -0.13607129, 0.04481216, 0.16941914, 0.11603386, -0.02262036, 0.16943455, -0.29026866, 0.37755782, -0.26286111, -0.27787174, -0.05011268, -18.19951433, 4.26289662, -2.29871992, -0.31703753, 0.61638094, 2.39622806, 0.24210587, -0.15649242, -0.17333316, -0.32991502, -0.32991502, -0.19400666, -0.05211699, -0.07298312, -0.18532801, -0.2908476, -0.34395346, 0.00974935, 0.01121482, 0.10787329, 0.12575831, 0.17381962, 0.07751455, -0.02703911, 0.16706533, 0.12100567, 0.06625108, 0.46837285, 0.15068632, 0.03837416, 0.13217608, -0.0954059, -100.96777729, -5.88243227, -2.29613411, -4.32479912, 2.52242149, 3.08910716, -4.95013416, -0.05882167, 0.69886385, 0.0384392, 0.15964804, 0.0073691, 0.11588341, 0.18667292, -0.05580502, -0.07269231, -0.03967092, 0.12122451, 0.14748209, 0.30308962, 0.22136404, -0.15871218, 0.0160296, 0.00631989, -0.04218267, 0.05914552, -0.27333286, -0.14292856, 0.11499007, -0.25301234, 0.19872866, -0.00857418, -2.47487373, -2.27533496, -0.1362792, -0.27043559, 0.40689594, 0.23629172, -0.8412313, -1.29501939, -0.31362899, 0.50333194, 0.42600461, -0.04623898, -0.11956769, -0.16412617, -0.1111845, -0.06109372, 0.00143165, 0.07661686, 0.22142337, -0.00967399, -0.0496024, -0.08446204, -0.10245426, 0.14213862, -0.10097742, 0.11283548, -0.3584822, 0.22532767, 0.19875711, -0.06849232, 0.13364794, 0.20744185, -2.29809704, -1.45194026, 0.77116527, 1.10663695, -0.81757676, -0.69455059, 0.83436011, 0.29969249, 1.36179058, -0.00736638, -0.07004267, -0.0106895, 0.00661633, -0.0407852, -0.12632761, -0.12668141, -0.07501279, -0.2374744, -0.09790777, -0.24670352, 0.45144848, 0.1025337, 0.05644033, 0.28003572, 0.08360499, -0.14807253, 0.5259077, 0.15194127, -0.27838831, 0.10507164, -0.28584771, -0.16909378, -20.85965005, -2.02391673, 1.05774493, 2.31853284, -0.98585837, -0.27191345, 0.97278576, 0.13528414, 0.65748269, -1.95999774, 0.17981601, -0.10814794, -0.04158895, 0.03372733, 0.21197339, 0.12051264, -0.03719881, 0.0586715, -0.14606322, 0.14798929, -0.48302966, -0.01135677, 0.01839298, -0.5461013, 0.05867197, -0.03280582, -0.01710709, 0.08406615, 0.43150754, 0.09937047, 0.26904434, -0.17183832, -15.90990258, 4.73923359, 1.67466143, 5.40625729, -1.10916641, 2.91869977, 1.986097, 0.36213558, 0.29305961, -1.49862291, 3.19781483, 0.4285521, 0.24945286, 0.25962216, -0.35158231, -0.12657909, 0.08421755, 0.27814023, -0.1564949, 0.14737805, 0.01523328, 0.03264996, 0.13933456, 0.09743337, -0.0941839, 0.1641559, 0.20104607, -0.03694607, 0.37393255, -0.23377891, -0.20724412, 0.25595958]
+##         },
+##         {
+##           &quot;type&quot;: &quot;double&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [1.1767767, 1.01602374, 1.11342651, 1.16661364, 1.07852284, 1.06742249, 1.05331383, 1.06898682, 1.0734536, 1.06090305, 1.07525606]
+##         },
+##         {
+##           &quot;type&quot;: &quot;integer&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+##         },
+##         {
+##           &quot;type&quot;: &quot;double&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [1e-07]
+##         },
+##         {
+##           &quot;type&quot;: &quot;integer&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [11]
+##         }
+##       ]
+##     },
+##     {
+##       &quot;type&quot;: &quot;integer&quot;,
+##       &quot;attributes&quot;: {},
+##       &quot;value&quot;: [21]
+##     },
+##     {
+##       &quot;type&quot;: &quot;list&quot;,
+##       &quot;attributes&quot;: {
+##         &quot;names&quot;: {
+##           &quot;type&quot;: &quot;character&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: []
+##         }
+##       },
+##       &quot;value&quot;: []
+##     },
+##     {
+##       &quot;type&quot;: &quot;language&quot;,
+##       &quot;attributes&quot;: {},
+##       &quot;value&quot;: [&quot;lm(formula = mpg ~ ., data = mtcars)&quot;]
+##     },
+##     {
+##       &quot;type&quot;: &quot;language&quot;,
+##       &quot;attributes&quot;: {
+##         &quot;variables&quot;: {
+##           &quot;type&quot;: &quot;language&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [&quot;list(mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb)&quot;]
+##         },
+##         &quot;factors&quot;: {
+##           &quot;type&quot;: &quot;integer&quot;,
+##           &quot;attributes&quot;: {
+##             &quot;dim&quot;: {
+##               &quot;type&quot;: &quot;integer&quot;,
+##               &quot;attributes&quot;: {},
+##               &quot;value&quot;: [11, 10]
+##             },
+##             &quot;dimnames&quot;: {
+##               &quot;type&quot;: &quot;list&quot;,
+##               &quot;attributes&quot;: {},
+##               &quot;value&quot;: [
+##                 {
+##                   &quot;type&quot;: &quot;character&quot;,
+##                   &quot;attributes&quot;: {},
+##                   &quot;value&quot;: [&quot;mpg&quot;, &quot;cyl&quot;, &quot;disp&quot;, &quot;hp&quot;, &quot;drat&quot;, &quot;wt&quot;, &quot;qsec&quot;, &quot;vs&quot;, &quot;am&quot;, &quot;gear&quot;, &quot;carb&quot;]
+##                 },
+##                 {
+##                   &quot;type&quot;: &quot;character&quot;,
+##                   &quot;attributes&quot;: {},
+##                   &quot;value&quot;: [&quot;cyl&quot;, &quot;disp&quot;, &quot;hp&quot;, &quot;drat&quot;, &quot;wt&quot;, &quot;qsec&quot;, &quot;vs&quot;, &quot;am&quot;, &quot;gear&quot;, &quot;carb&quot;]
+##                 }
+##               ]
+##             }
+##           },
+##           &quot;value&quot;: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+##         },
+##         &quot;term.labels&quot;: {
+##           &quot;type&quot;: &quot;character&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [&quot;cyl&quot;, &quot;disp&quot;, &quot;hp&quot;, &quot;drat&quot;, &quot;wt&quot;, &quot;qsec&quot;, &quot;vs&quot;, &quot;am&quot;, &quot;gear&quot;, &quot;carb&quot;]
+##         },
+##         &quot;order&quot;: {
+##           &quot;type&quot;: &quot;integer&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+##         },
+##         &quot;intercept&quot;: {
+##           &quot;type&quot;: &quot;integer&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [1]
+##         },
+##         &quot;response&quot;: {
+##           &quot;type&quot;: &quot;integer&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [1]
+##         },
+##         &quot;class&quot;: {
+##           &quot;type&quot;: &quot;character&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [&quot;terms&quot;, &quot;formula&quot;]
+##         },
+##         &quot;.Environment&quot;: {
+##           &quot;type&quot;: &quot;environment&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: {}
+##         },
+##         &quot;predvars&quot;: {
+##           &quot;type&quot;: &quot;language&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [&quot;list(mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb)&quot;]
+##         },
+##         &quot;dataClasses&quot;: {
+##           &quot;type&quot;: &quot;character&quot;,
+##           &quot;attributes&quot;: {
+##             &quot;names&quot;: {
+##               &quot;type&quot;: &quot;character&quot;,
+##               &quot;attributes&quot;: {},
+##               &quot;value&quot;: [&quot;mpg&quot;, &quot;cyl&quot;, &quot;disp&quot;, &quot;hp&quot;, &quot;drat&quot;, &quot;wt&quot;, &quot;qsec&quot;, &quot;vs&quot;, &quot;am&quot;, &quot;gear&quot;, &quot;carb&quot;]
+##             }
+##           },
+##           &quot;value&quot;: [&quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;]
+##         }
+##       },
+##       &quot;value&quot;: [&quot;mpg ~ cyl + disp + hp + drat + wt + qsec + vs + am + gear + carb&quot;]
+##     },
+##     {
+##       &quot;type&quot;: &quot;list&quot;,
+##       &quot;attributes&quot;: {
+##         &quot;names&quot;: {
+##           &quot;type&quot;: &quot;character&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [&quot;mpg&quot;, &quot;cyl&quot;, &quot;disp&quot;, &quot;hp&quot;, &quot;drat&quot;, &quot;wt&quot;, &quot;qsec&quot;, &quot;vs&quot;, &quot;am&quot;, &quot;gear&quot;, &quot;carb&quot;]
+##         },
+##         &quot;terms&quot;: {
+##           &quot;type&quot;: &quot;language&quot;,
+##           &quot;attributes&quot;: {
+##             &quot;variables&quot;: {
+##               &quot;type&quot;: &quot;language&quot;,
+##               &quot;attributes&quot;: {},
+##               &quot;value&quot;: [&quot;list(mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb)&quot;]
+##             },
+##             &quot;factors&quot;: {
+##               &quot;type&quot;: &quot;integer&quot;,
+##               &quot;attributes&quot;: {
+##                 &quot;dim&quot;: {
+##                   &quot;type&quot;: &quot;integer&quot;,
+##                   &quot;attributes&quot;: {},
+##                   &quot;value&quot;: [11, 10]
+##                 },
+##                 &quot;dimnames&quot;: {
+##                   &quot;type&quot;: &quot;list&quot;,
+##                   &quot;attributes&quot;: {},
+##                   &quot;value&quot;: [
+##                     {
+##                       &quot;type&quot;: &quot;character&quot;,
+##                       &quot;attributes&quot;: {},
+##                       &quot;value&quot;: [&quot;mpg&quot;, &quot;cyl&quot;, &quot;disp&quot;, &quot;hp&quot;, &quot;drat&quot;, &quot;wt&quot;, &quot;qsec&quot;, &quot;vs&quot;, &quot;am&quot;, &quot;gear&quot;, &quot;carb&quot;]
+##                     },
+##                     {
+##                       &quot;type&quot;: &quot;character&quot;,
+##                       &quot;attributes&quot;: {},
+##                       &quot;value&quot;: [&quot;cyl&quot;, &quot;disp&quot;, &quot;hp&quot;, &quot;drat&quot;, &quot;wt&quot;, &quot;qsec&quot;, &quot;vs&quot;, &quot;am&quot;, &quot;gear&quot;, &quot;carb&quot;]
+##                     }
+##                   ]
+##                 }
+##               },
+##               &quot;value&quot;: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+##             },
+##             &quot;term.labels&quot;: {
+##               &quot;type&quot;: &quot;character&quot;,
+##               &quot;attributes&quot;: {},
+##               &quot;value&quot;: [&quot;cyl&quot;, &quot;disp&quot;, &quot;hp&quot;, &quot;drat&quot;, &quot;wt&quot;, &quot;qsec&quot;, &quot;vs&quot;, &quot;am&quot;, &quot;gear&quot;, &quot;carb&quot;]
+##             },
+##             &quot;order&quot;: {
+##               &quot;type&quot;: &quot;integer&quot;,
+##               &quot;attributes&quot;: {},
+##               &quot;value&quot;: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+##             },
+##             &quot;intercept&quot;: {
+##               &quot;type&quot;: &quot;integer&quot;,
+##               &quot;attributes&quot;: {},
+##               &quot;value&quot;: [1]
+##             },
+##             &quot;response&quot;: {
+##               &quot;type&quot;: &quot;integer&quot;,
+##               &quot;attributes&quot;: {},
+##               &quot;value&quot;: [1]
+##             },
+##             &quot;class&quot;: {
+##               &quot;type&quot;: &quot;character&quot;,
+##               &quot;attributes&quot;: {},
+##               &quot;value&quot;: [&quot;terms&quot;, &quot;formula&quot;]
+##             },
+##             &quot;.Environment&quot;: {
+##               &quot;type&quot;: &quot;environment&quot;,
+##               &quot;attributes&quot;: {},
+##               &quot;value&quot;: {}
+##             },
+##             &quot;predvars&quot;: {
+##               &quot;type&quot;: &quot;language&quot;,
+##               &quot;attributes&quot;: {},
+##               &quot;value&quot;: [&quot;list(mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb)&quot;]
+##             },
+##             &quot;dataClasses&quot;: {
+##               &quot;type&quot;: &quot;character&quot;,
+##               &quot;attributes&quot;: {
+##                 &quot;names&quot;: {
+##                   &quot;type&quot;: &quot;character&quot;,
+##                   &quot;attributes&quot;: {},
+##                   &quot;value&quot;: [&quot;mpg&quot;, &quot;cyl&quot;, &quot;disp&quot;, &quot;hp&quot;, &quot;drat&quot;, &quot;wt&quot;, &quot;qsec&quot;, &quot;vs&quot;, &quot;am&quot;, &quot;gear&quot;, &quot;carb&quot;]
+##                 }
+##               },
+##               &quot;value&quot;: [&quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;, &quot;numeric&quot;]
+##             }
+##           },
+##           &quot;value&quot;: [&quot;mpg ~ cyl + disp + hp + drat + wt + qsec + vs + am + gear + carb&quot;]
+##         },
+##         &quot;row.names&quot;: {
+##           &quot;type&quot;: &quot;character&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [&quot;Mazda RX4&quot;, &quot;Mazda RX4 Wag&quot;, &quot;Datsun 710&quot;, &quot;Hornet 4 Drive&quot;, &quot;Hornet Sportabout&quot;, &quot;Valiant&quot;, &quot;Duster 360&quot;, &quot;Merc 240D&quot;, &quot;Merc 230&quot;, &quot;Merc 280&quot;, &quot;Merc 280C&quot;, &quot;Merc 450SE&quot;, &quot;Merc 450SL&quot;, &quot;Merc 450SLC&quot;, &quot;Cadillac Fleetwood&quot;, &quot;Lincoln Continental&quot;, &quot;Chrysler Imperial&quot;, &quot;Fiat 128&quot;, &quot;Honda Civic&quot;, &quot;Toyota Corolla&quot;, &quot;Toyota Corona&quot;, &quot;Dodge Challenger&quot;, &quot;AMC Javelin&quot;, &quot;Camaro Z28&quot;, &quot;Pontiac Firebird&quot;, &quot;Fiat X1-9&quot;, &quot;Porsche 914-2&quot;, &quot;Lotus Europa&quot;, &quot;Ford Pantera L&quot;, &quot;Ferrari Dino&quot;, &quot;Maserati Bora&quot;, &quot;Volvo 142E&quot;]
+##         },
+##         &quot;class&quot;: {
+##           &quot;type&quot;: &quot;character&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [&quot;data.frame&quot;]
+##         }
+##       },
+##       &quot;value&quot;: [
+##         {
+##           &quot;type&quot;: &quot;double&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [21, 21, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8, 16.4, 17.3, 15.2, 10.4, 10.4, 14.7, 32.4, 30.4, 33.9, 21.5, 15.5, 15.2, 13.3, 19.2, 27.3, 26, 30.4, 15.8, 19.7, 15, 21.4]
+##         },
+##         {
+##           &quot;type&quot;: &quot;double&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8, 8, 8, 8, 4, 4, 4, 8, 6, 8, 4]
+##         },
+##         {
+##           &quot;type&quot;: &quot;double&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [160, 160, 108, 258, 360, 225, 360, 146.7, 140.8, 167.6, 167.6, 275.8, 275.8, 275.8, 472, 460, 440, 78.7, 75.7, 71.1, 120.1, 318, 304, 350, 400, 79, 120.3, 95.1, 351, 145, 301, 121]
+##         },
+##         {
+##           &quot;type&quot;: &quot;double&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180, 205, 215, 230, 66, 52, 65, 97, 150, 150, 245, 175, 66, 91, 113, 264, 175, 335, 109]
+##         },
+##         {
+##           &quot;type&quot;: &quot;double&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [3.9, 3.9, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92, 3.07, 3.07, 3.07, 2.93, 3, 3.23, 4.08, 4.93, 4.22, 3.7, 2.76, 3.15, 3.73, 3.08, 4.08, 4.43, 3.77, 4.22, 3.62, 3.54, 4.11]
+##         },
+##         {
+##           &quot;type&quot;: &quot;double&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [2.62, 2.875, 2.32, 3.215, 3.44, 3.46, 3.57, 3.19, 3.15, 3.44, 3.44, 4.07, 3.73, 3.78, 5.25, 5.424, 5.345, 2.2, 1.615, 1.835, 2.465, 3.52, 3.435, 3.84, 3.845, 1.935, 2.14, 1.513, 3.17, 2.77, 3.57, 2.78]
+##         },
+##         {
+##           &quot;type&quot;: &quot;double&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [16.46, 17.02, 18.61, 19.44, 17.02, 20.22, 15.84, 20, 22.9, 18.3, 18.9, 17.4, 17.6, 18, 17.98, 17.82, 17.42, 19.47, 18.52, 19.9, 20.01, 16.87, 17.3, 15.41, 17.05, 18.9, 16.7, 16.9, 14.5, 15.5, 14.6, 18.6]
+##         },
+##         {
+##           &quot;type&quot;: &quot;double&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1]
+##         },
+##         {
+##           &quot;type&quot;: &quot;double&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1]
+##         },
+##         {
+##           &quot;type&quot;: &quot;double&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3, 3, 3, 3, 4, 5, 5, 5, 5, 5, 4]
+##         },
+##         {
+##           &quot;type&quot;: &quot;double&quot;,
+##           &quot;attributes&quot;: {},
+##           &quot;value&quot;: [4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2, 2, 4, 2, 1, 2, 2, 4, 6, 8, 2]
+##         }
+##       ]
+##     }
+##   ]
+## }
+</code></pre>
+
+<h2>JSON para dataframes</h2>
+
+<pre><code class="r">toJSON(cars, pretty=T)
+</code></pre>
+
+<pre><code>## [
+##   {
+##     &quot;speed&quot;: 4,
+##     &quot;dist&quot;: 2
+##   },
+##   {
+##     &quot;speed&quot;: 4,
+##     &quot;dist&quot;: 10
+##   },
+##   {
+##     &quot;speed&quot;: 7,
+##     &quot;dist&quot;: 4
+##   },
+##   {
+##     &quot;speed&quot;: 7,
+##     &quot;dist&quot;: 22
+##   },
+##   {
+##     &quot;speed&quot;: 8,
+##     &quot;dist&quot;: 16
+##   },
+##   {
+##     &quot;speed&quot;: 9,
+##     &quot;dist&quot;: 10
+##   },
+##   {
+##     &quot;speed&quot;: 10,
+##     &quot;dist&quot;: 18
+##   },
+##   {
+##     &quot;speed&quot;: 10,
+##     &quot;dist&quot;: 26
+##   },
+##   {
+##     &quot;speed&quot;: 10,
+##     &quot;dist&quot;: 34
+##   },
+##   {
+##     &quot;speed&quot;: 11,
+##     &quot;dist&quot;: 17
+##   },
+##   {
+##     &quot;speed&quot;: 11,
+##     &quot;dist&quot;: 28
+##   },
+##   {
+##     &quot;speed&quot;: 12,
+##     &quot;dist&quot;: 14
+##   },
+##   {
+##     &quot;speed&quot;: 12,
+##     &quot;dist&quot;: 20
+##   },
+##   {
+##     &quot;speed&quot;: 12,
+##     &quot;dist&quot;: 24
+##   },
+##   {
+##     &quot;speed&quot;: 12,
+##     &quot;dist&quot;: 28
+##   },
+##   {
+##     &quot;speed&quot;: 13,
+##     &quot;dist&quot;: 26
+##   },
+##   {
+##     &quot;speed&quot;: 13,
+##     &quot;dist&quot;: 34
+##   },
+##   {
+##     &quot;speed&quot;: 13,
+##     &quot;dist&quot;: 34
+##   },
+##   {
+##     &quot;speed&quot;: 13,
+##     &quot;dist&quot;: 46
+##   },
+##   {
+##     &quot;speed&quot;: 14,
+##     &quot;dist&quot;: 26
+##   },
+##   {
+##     &quot;speed&quot;: 14,
+##     &quot;dist&quot;: 36
+##   },
+##   {
+##     &quot;speed&quot;: 14,
+##     &quot;dist&quot;: 60
+##   },
+##   {
+##     &quot;speed&quot;: 14,
+##     &quot;dist&quot;: 80
+##   },
+##   {
+##     &quot;speed&quot;: 15,
+##     &quot;dist&quot;: 20
+##   },
+##   {
+##     &quot;speed&quot;: 15,
+##     &quot;dist&quot;: 26
+##   },
+##   {
+##     &quot;speed&quot;: 15,
+##     &quot;dist&quot;: 54
+##   },
+##   {
+##     &quot;speed&quot;: 16,
+##     &quot;dist&quot;: 32
+##   },
+##   {
+##     &quot;speed&quot;: 16,
+##     &quot;dist&quot;: 40
+##   },
+##   {
+##     &quot;speed&quot;: 17,
+##     &quot;dist&quot;: 32
+##   },
+##   {
+##     &quot;speed&quot;: 17,
+##     &quot;dist&quot;: 40
+##   },
+##   {
+##     &quot;speed&quot;: 17,
+##     &quot;dist&quot;: 50
+##   },
+##   {
+##     &quot;speed&quot;: 18,
+##     &quot;dist&quot;: 42
+##   },
+##   {
+##     &quot;speed&quot;: 18,
+##     &quot;dist&quot;: 56
+##   },
+##   {
+##     &quot;speed&quot;: 18,
+##     &quot;dist&quot;: 76
+##   },
+##   {
+##     &quot;speed&quot;: 18,
+##     &quot;dist&quot;: 84
+##   },
+##   {
+##     &quot;speed&quot;: 19,
+##     &quot;dist&quot;: 36
+##   },
+##   {
+##     &quot;speed&quot;: 19,
+##     &quot;dist&quot;: 46
+##   },
+##   {
+##     &quot;speed&quot;: 19,
+##     &quot;dist&quot;: 68
+##   },
+##   {
+##     &quot;speed&quot;: 20,
+##     &quot;dist&quot;: 32
+##   },
+##   {
+##     &quot;speed&quot;: 20,
+##     &quot;dist&quot;: 48
+##   },
+##   {
+##     &quot;speed&quot;: 20,
+##     &quot;dist&quot;: 52
+##   },
+##   {
+##     &quot;speed&quot;: 20,
+##     &quot;dist&quot;: 56
+##   },
+##   {
+##     &quot;speed&quot;: 20,
+##     &quot;dist&quot;: 64
+##   },
+##   {
+##     &quot;speed&quot;: 22,
+##     &quot;dist&quot;: 66
+##   },
+##   {
+##     &quot;speed&quot;: 23,
+##     &quot;dist&quot;: 54
+##   },
+##   {
+##     &quot;speed&quot;: 24,
+##     &quot;dist&quot;: 70
+##   },
+##   {
+##     &quot;speed&quot;: 24,
+##     &quot;dist&quot;: 92
+##   },
+##   {
+##     &quot;speed&quot;: 24,
+##     &quot;dist&quot;: 93
+##   },
+##   {
+##     &quot;speed&quot;: 24,
+##     &quot;dist&quot;: 120
+##   },
+##   {
+##     &quot;speed&quot;: 25,
+##     &quot;dist&quot;: 85
+##   }
+## ]
+</code></pre>
+
+<pre><code class="r">toJSON(cars, pretty=T, dataframe = &quot;col&quot;)
+</code></pre>
+
+<pre><code>## {
+##   &quot;speed&quot;: [4, 4, 7, 7, 8, 9, 10, 10, 10, 11, 11, 12, 12, 12, 12, 13, 13, 13, 13, 14, 14, 14, 14, 15, 15, 15, 16, 16, 17, 17, 17, 18, 18, 18, 18, 19, 19, 19, 20, 20, 20, 20, 20, 22, 23, 24, 24, 24, 24, 25],
+##   &quot;dist&quot;: [2, 10, 4, 22, 16, 10, 18, 26, 34, 17, 28, 14, 20, 24, 28, 26, 34, 34, 46, 26, 36, 60, 80, 20, 26, 54, 32, 40, 32, 40, 50, 42, 56, 76, 84, 36, 46, 68, 32, 48, 52, 56, 64, 66, 54, 70, 92, 93, 120, 85]
+## }
+</code></pre>
+
+<h2>Write JSON</h2>
+
+<pre><code class="r">json &lt;- toJSON(cars, pretty=T, dataframe = &quot;col&quot;)
+write(json, &quot;tmp&quot;)
+writeLines(json,&quot;tmp.json&quot;)
 </code></pre>
 
 </body>
