@@ -17,6 +17,11 @@ Paquetes y herramientas para webscraping
 - [Presentación](https://docs.google.com/presentation/d/1aFUbRznKUnpLLx6llURR9hxOwVNTz3kHeY5I4QAAljg/pub?start=false&loop=false&delayms=3000&slide=id.p)
 
 
+
+## Manipulación de datos con tidyr y dplyr (2016-08-10)
+
+
+
 ## Ideas meetup
 
 - Trabajando con JSON
