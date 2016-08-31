@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p> 
+
+<table id="table"></table>
+
+<script type="text/javascript" class="init">
+
+var Olympics = [["COUNTRY", "GOLD", "SILVER", "BRONZE"],
+["USA", 48, 37, 38],["GBR", 27, 23, 17]];
+
+Olympics.forEach(function(items) {
+  var row = document.createElement("tr");
+  items.forEach(function(item) {
+    var cell = document.createElement("td");
+    cell.textContent = item;
+    row.appendChild(cell);
+  });
+  table.appendChild(row);
+});
+
+
+</script>
+
+
+</body>
+</html>

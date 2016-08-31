@@ -21,6 +21,8 @@ Paquetes y herramientas para webscraping
 ## Manipulación de datos con tidyr y dplyr (2016-08-10)
 
 
+## Ejemplo de HTMLWIDGETS (2016-08-30)
+
 
 ## Ideas meetup
 
@@ -28,7 +30,7 @@ Paquetes y herramientas para webscraping
 - Limpieza de datos
 - Introducción general
 - Comparar gráficos con ggplot (extensiones)
-- 
+- Construcción de paquetes y documentación
 
 
 
