@@ -31,7 +31,7 @@ Paquetes y herramientas para webscraping
 - Introducción general
 - Comparar gráficos con ggplot (extensiones)
 - Construcción de paquetes y documentación
-
+- 
 
 
 
